@@ -46,6 +46,11 @@ def update_location(location_id):
     })
     return redirect(url_for('locations'))
 
+@app.route('/delete_location/<location_id>')
+def delete_location(location_id):
+    mongo.db.locations.remove({'_id': ObjectId(location_id)})
+    return redirect(url_for('locations'))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT', '5000')),
