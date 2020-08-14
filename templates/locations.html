@@ -19,7 +19,7 @@
       </div>
     </div>
     
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" >Submit</button>
   </form>
   
 
@@ -32,6 +32,8 @@
     <img src="{{location.picture}}" class="card-img-top" alt="...">
     <div class="card-body">
       <p class="card-text">{{location.address}}</p>
+      <a href="{{url_for('edit_location', location_id=location._id)}}" type="button" class="btn btn-secondary">Edit</a>
+      <a type="button" class="btn btn-danger">Delete</a>
     </div>
     {% endfor %}
 </div>
