@@ -29,7 +29,22 @@ def insert_location():
     locations.insert_one(request.form.to_dict())
     return redirect(url_for('locations'))
 
+@app.route('/edit_location/<location_id>')
+def edit_location(location_id):
+    the_location =  mongo.db.locations.find_one({"_id": ObjectId(location_id)})
+    return render_template('editlocation.html', location = the_location)
 
+@app.route('/update_location/<location_id>', methods=["POST"])
+def update_location(location_id):
+    locations = mongo.db.locations
+    locations.update( {'_id': ObjectId(location_id)},
+    {
+        'name':request.form.get('name'),
+        'address':request.form.get('address'),
+        'email': request.form.get('email'),
+        'picture': request.form.get('picture'),
+    })
+    return redirect(url_for('locations'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
