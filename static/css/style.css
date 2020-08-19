@@ -1,11 +1,40 @@
 #header {
   background-image: url("https://lp-cms-production.imgix.net/2019-06/GettyImages-153020210_medium.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4");
 }
-  .nav-item {
-    font-size: 1.25rem;
-  }
-  .socialLinks{
-    text-align: center;
-    font-size: 1.75rem;
-    padding-top: 0.5rem;
-  }
+.title {
+  background-color: rgb(58, 57, 52, 35%);
+}
+#header.alt .mission{
+  font-size: 1rem;
+  font-weight: 600;
+  color:rgba(255, 255, 255) ;
+}
+.learnButton{
+  color: rgba(255, 255, 255) !important;
+  background-color: rgb(72, 64, 64, 0.50);;
+}
+.nav-item {
+  font-size: 1.25rem;
+}
+.socialLinks{
+  text-align: center;
+  font-size: 1.75rem;
+  padding-top: 0.5rem;
+}
+.images{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+#header.alt{
+  min-height: 95vh;
+}
+.mainSectionIndex{
+  height: 100vh;;
+  background: url("https://lp-cms-production.imgix.net/2019-06/GettyImages-153020210_medium.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4") center center / cover no-repeat;
+  overflow: scroll;
+}
+#main .itemsLocations{
+  width: -webkit-fill-available;
+  background-color: rgb(177 161 161 / 50%)
+}

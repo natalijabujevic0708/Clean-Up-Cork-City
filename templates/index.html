@@ -1,38 +1,41 @@
 {% extends 'base.html' %} {% block content %}
 <header id="header" class="alt">
-    <div class="inner">
+    <div class="inner title">
         <h1>Clean Up Cork City</h1>
-        <p>Our mission is to clean up Cork City with litter cleanup and waste mapping </p>
+        <p class="mission">Our mission is to clean up Cork City with litter cleanup and waste mapping </p>
         <ul class="actions">
-            <li><a href="#main" class="button">Learn More</a></li>
+            <li><a id="scrollLink" class="button learnButton">Learn More</a></li>
         </ul>
     </div>
 </header>
 
 
     <!-- Items -->
+    <div class="mainSectionIndex">
         <section id="main" class="main items">
             <article class="item">
                 <header>
-                    <a href="#"><img src="images/pic01.jpg" alt="" /></a>
-                    <h3>Feugiat et faucibus</h3>
+                    <a href="{{url_for('about')}}"><img src="https://images.pexels.com/photos/2547565/pexels-photo-2547565.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Plastic litter" class="images" /></a>
+                    <h3>The issue of littering</h3>
                 </header>
-                <p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
+                <p>Littering is an ever-increasing worldwide problem. Chances are, you’ve seen litter scattered along roadsides, floating in waterways, or blowing across a parking lot. The well-being of people, animals, and the environment is compromised by litter. 
+                    Our mission is to organise a community cleanup program in Cork City. <br> Learn how you can help!</p>
                 <ul class="actions">
-                    <li><a href="#" class="button">More</a></li>
+                    <li><a href="{{url_for('about')}}" class="button">More</a></li>
                 </ul>
             </article>
             <article class="item">
                 <header>
-                    <a href="#"><img src="images/pic02.jpg" alt="" /></a>
-                    <h3>Blandit adipiscing</h3>
+                    <a href="{{url_for('locations')}}"><img src="https://www.exchangewire.com/wp-content/uploads/2016/02/Location.jpg" alt="" class="images"/></a>
+                    <h3>Creating a map of waste</h3>
                 </header>
-                <p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare.</p>
+                <p>If you spot an area with unwanted trash around Cork City, mark the location on our website and we will organize a cleanup with our volunteers.<br> Learn how you can help!</p>
                 <ul class="actions">
-                    <li><a href="#" class="button">More</a></li>
+                    <li><a href="{{url_for('locations')}}" class="button">More</a></li>
                 </ul>
-                </article>
-                </section>
-                </div>
+            </article>
+        </section>
+    </div>
+            
 
 {% endblock %}
