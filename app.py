@@ -1,5 +1,8 @@
-import os
-from flask import Flask
+import os, time
+from flask import Flask, render_template, redirect, request, url_for
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId 
+from  geopy.geocoders import Nominatim
 
 app = Flask(__name__)
 
@@ -27,8 +30,15 @@ def insert_location():
     if 'picture' in request.files:
         picture=request.files['picture']
         mongo.save_file(picture.filename, picture)
-        mongo.db.locations.insert({'address': request.form.get('address'), 'picture_name': picture.filename, 'name': request.form.get('name'),'email': request.form.get('email')})
-    return redirect(url_for('locations'))
+        geolocator = Nominatim(user_agent="natalijabujevic0708@gmail.com")
+        city = "Cork"
+        country = "Ireland"
+        address = request.form.get('address')
+        loc = geolocator.geocode(address + ','+ city +','+ country)
+        mongo.db.locations.insert({'address': request.form.get('address'), 'picture_name': picture.filename, 
+        'name': request.form.get('name'),'email': request.form.get('email'), 
+        'date' : time.strftime("%Y-%m-%d %H:%M:%S"),"latitude": loc.latitude, "longitude" : loc.longitude})
+        return redirect(url_for('locations'))
 
 @app.route('/edit_location/<location_id>')
 def edit_location(location_id):
@@ -55,10 +65,10 @@ def picture (picture_name):
 def location_details(location_id):
     the_location_details = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
     address = the_location_details['address']
-    return f'''
-        <h1>{address}</h1>
-        <img src = "{url_for('picture', picture_name = the_location_details['picture_name'])}" id="cardImage" class="card-img-top" alt="...">
-    '''
+    name = the_location_details['name']
+    date = the_location_details['date']
+    src =url_for('picture', picture_name = the_location_details['picture_name'])
+    return render_template('location_details.html', src = src, address = address, name = name, date = date)
 
 @app.route('/delete_location/<location_id>')
 def delete_location(location_id):

@@ -23,11 +23,13 @@
   </form>
   
 
-
+  <div id="map"></div>
   <section id="main" class="main items">
     {% for location in locations %}
     <article class="item itemsLocations">
-        <h3>{{location.address}}</h3>
+        <h3 class="address">{{location.address}}</h3>
+        <p class="lat">{{location.latitude}}</p>
+        <p class="long">{{location.longitude}}</p>
         <ul class="actions">
             <li><a href="{{url_for('location_details', location_id=location._id)}}"class="button">More Details</a></li>
             <li><a  href="{{url_for('edit_location', location_id=location._id)}}" class="button">Edit Location</a></li>

@@ -38,3 +38,6 @@
   width: -webkit-fill-available;
   background-color: rgb(177 161 161 / 50%)
 }
+#map {
+  height: 50vh;
+}
