@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
     function addInfoWindow(marker, message) {
         var infoWindow = new google.maps.InfoWindow({
             content: message
@@ -26,7 +26,7 @@ $(document).ready(function() {
             };
         };
      
-    });
+    
      
 
       
