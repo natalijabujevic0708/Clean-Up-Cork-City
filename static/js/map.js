@@ -14,7 +14,7 @@
                 lat: 51.903614,
                 lng: -8.468399
             }
-        });
+         });
         
             var itemsLocations = document.querySelectorAll(".itemsLocations");
             for (var i = 0; i < itemsLocations.length; i++) {
@@ -24,9 +24,14 @@
             });
                     addInfoWindow(marker, this.document.getElementsByClassName('address')[i].innerHTML);
             };
-        };
-     
-    
+            var input = document.getElementById('addressForm')[0];
+            var autocomplete = new google.maps.places.Autocomplete(input,{types: ['address']});
+            google.maps.event.addListener(autocomplete, 'place_changed', function(){
+               var place = autocomplete.getPlace();
+            })
+        }
+       
+       
      
 
       

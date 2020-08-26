@@ -57,15 +57,19 @@
                 </div>
             </div>
         </footer>
-        <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
        
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places"></script>
         <script src="{{ url_for('static', filename='js/scroll.js')}}"></script>
+        <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/geocomplete@1.7.0/jquery.geocomplete.min.js"></script>
         <script src="{{ url_for('static', filename='js/map.js')}}"></script>
         <script src="https://use.fontawesome.com/ad127ebdf9.js"></script>
-        <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&callback=initMap"></script>
+        
+        <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places&callback=initMap"></script>
+       
+
+
         <!-- JS, Popper.js, and jQuery -->
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
     </body>
