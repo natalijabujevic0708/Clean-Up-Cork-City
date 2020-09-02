@@ -278,7 +278,7 @@
 	}
 
 		a:hover {
-			color: #EF6480 !important;
+			color: #EF6480;
 		}
 
 	strong, b {
@@ -430,7 +430,7 @@
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			color: #EF6480 !important;
+			color: #EF6480 ;
 			box-shadow: inset 0 0 0 2px #EF6480;
 		}
 
@@ -1086,7 +1086,7 @@
 			}
 
 				.item header a:hover {
-					color: #EF6480 !important;
+					color: #EF6480;
 				}
 
 			.item header strong, .item header b {
@@ -1292,7 +1292,7 @@
 		-ms-flex-direction: column;
 		flex-direction: column;
 		padding: 8em 0 6em 0;
-		background-image: url("../../images/banner.jpg");
+		
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
@@ -1310,7 +1310,7 @@
 		}
 
 			#header a:hover {
-				color: #EF6480 !important;
+				color: #EF6480;
 			}
 
 		#header strong, #header b {
@@ -1343,7 +1343,7 @@
 			width: 100%;
 			height: 100%;
 			background-color: rgba(0, 0, 0, 0.25);
-			background-image: url("images/overlay.png");
+			
 		}
 
 		#header h1 {
