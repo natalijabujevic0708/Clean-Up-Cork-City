@@ -70,7 +70,7 @@ def location_details(location_id):
 @app.route('/edit_location/<location_id>')
 def edit_location(location_id):
     the_location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    return render_template('editlocation.html', location=the_location)
+    return render_template('edit_location.html', location=the_location)
 
 
 @app.route('/update_location/<location_id>', methods=["POST"])
@@ -95,7 +95,7 @@ def update_location(location_id):
 @app.route('/delete_location/<location_id>')
 def delete_location(location_id):
     the_location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    return render_template('deletelocation.html', location=the_location)
+    return render_template('delete_location.html', location=the_location)
 
 @app.route('/delete_location_update/<location_id>', methods=["POST"])
 def delete_location_update(location_id):

@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
-<section class="aboutHero">
-  <h1 class="title">Clean Up Cork city</h1>
+<section class="titleContainer">
+  <h1 class="title">Clean Up Cork City</h1>
   <p>-Edit an existing location-</p>
 </section>
 <form action="{{ url_for('update_location', location_id=location._id) }}" method="POST">
