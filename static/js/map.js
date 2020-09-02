@@ -24,11 +24,15 @@
             });
                     addInfoWindow(marker, this.document.getElementsByClassName('address')[i].innerHTML);
             };
+            var defaultBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(51.8722517,-8.53925228),
+                new google.maps.LatLng(51.91886165,-8.42110634))
+            var options = {
+                bounds:defaultBounds
+            };
             var input = document.getElementById('addressForm')[0];
+            var autocomplete = new google.maps.places.Autocomplete(input, options)
             var autocomplete = new google.maps.places.Autocomplete(input,{types: ['address']});
-            google.maps.event.addListener(autocomplete, 'place_changed', function(){
-               var place = autocomplete.getPlace();
-            })
         }
        
        
