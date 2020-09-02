@@ -1,10 +1,24 @@
+/*------------------------- General styles */
 body {
     text-align: center;
 }
+/*------------------------- Navigation */
+.navbar {
+    text-align: left;
+}
+.nav-item {
+    font-size: 1.25rem;
+}
+.navbar-light .navbar-nav .nav-link {
+    border: none;
+}
+.navbar-light .navbar-toggler {
+    height: auto;
+}
+/*------------------------- Header */
 .heroImage {
     background-image: url("https://lp-cms-production.imgix.net/2019-06/GettyImages-153020210_medium.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4");
 }
-
 #header::before {
     position: absolute;
     top: 0;
@@ -13,45 +27,13 @@ body {
     left: 0;
     background-color: rgba(0, 0, 0, 0.6);
 }
-
 #header.alt .mission {
     font-size: 2vh;
     font-weight: 600;
     color: rgba(255, 255, 255);
 }
-.learnButton {
-    color: rgba(255, 255, 255) !important;
-    background-color: rgb(72, 64, 64, 0.50);
-}
-.navbar {
-    text-align: left;
-}
-.nav-item {
-    font-size: 1.25rem;
-}
-.socialLinks {
-    text-align: center;
-    font-size: 1.75rem;
-    padding-top: 0.5rem;
-}
-.images {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-}
 #header.alt {
     min-height: 95vh;
-}
-
-#main .itemsLocations {
-    width: fit-content;
-    background-color: rgb(177 161 161 / 50%)
-}
-#map {
-    height: 50vh;
-}
-.navbar-light .navbar-nav .nav-link {
-    border: none;
 }
 #header a:hover,
 .item header a:hover,
@@ -59,21 +41,19 @@ body {
     border: none;
     text-decoration: none;
     background-color: rgb(25 24 24 / 20%);
-
 }
-.navbar-light .navbar-toggler {
-    height: auto;
+.learnButton {
+    color: rgba(255, 255, 255) !important;
+    background-color: rgb(72, 64, 64, 0.50);
 }
-
-.aboutSections {
-    border: 1px solid;
-    padding: 2vh;
+/*------------------------- Social links */
+.socialLinks {
+    text-align: center;
+    font-size: 1.75rem;
+    padding-top: 0.5rem;
 }
-
-.descriptionAbout {
-    font-size: 3.5vh;
-}
-.aboutHero {
+/*------------------------- Title */
+.titleContainer {
     margin: 5vh;
 }
 .title {
@@ -88,12 +68,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.325rem;
 }
-.item .headerLocationDetails {
-    height: 50vh;
-}
-ul.actionsLocationDetails {
-    margin: 2em 0 1em;
-}
+/*------------------------- Form */
 #addressForm {
     margin: 5vh;
     border: solid 1px;
@@ -101,4 +76,24 @@ ul.actionsLocationDetails {
 }
 #addressForm h2 {
     font-size: 4vh;
+}
+/*------------------------- location_details.html */
+.images {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.item .headerLocationDetails {
+    height: 50vh;
+}
+ul.actionsLocationDetails {
+    margin: 2em 0 1em;
+}
+/*------------------------- locations.html */
+#main .itemsLocations {
+    width: fit-content;
+    background-color: rgb(177 161 161 / 50%)
+}
+#map {
+    height: 50vh;
 }
