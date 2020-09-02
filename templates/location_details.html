@@ -1,6 +1,12 @@
 
 {% extends 'base.html' %} {% block content %}
-<h1>{{address}}</h1> 
-<img src = "{{src}}" id="cardImage" class="card-img-top" alt="Picture of the garbage on the location">
-<h2>Uploaded by {{name}} on {{date}}</h2>
+<article class="item">
+    <header class="headerLocationDetails">
+        <img src="{{src}}" id="cardImage" class="images" />
+    </header>
+    <p>Address : {{address}}<br> Uploaded by {{name}} on {{date}}</p>
+    <ul class="actions actionsLocationDetails">
+        <li><a href="{{url_for('locations')}}" class="button">Go back to the map</a></li>
+    </ul>
+</article>
 {% endblock %}
