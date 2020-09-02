@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block content %}
+<section class="aboutHero">
+    <h1 class="title">Clean Up Cork city</h1>
+    <p>-About Us-</p>
+</section>
+<section id="main" class="container-fluid">
+    <article class="item">
+        <header>
+            <a href="{{url_for('locations')}}"><img
+                    src="https://images.pexels.com/photos/2409022/pexels-photo-2409022.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    alt="Plastic litter" class="images" /></a>
+            <h2>What is our mission?</h2>
+        </header>
+        <p>Littering is an ever-increasing worldwide problem. Chances are, you’ve seen litter scattered along roadsides,
+            floating in waterways, or blowing across a parking lot. The well-being of people, animals, and the
+            environment is compromised by litter.<br> Our mission is to try to help with gathering information about
+            illegal dumps in Cork City and to clean it up with the help of our volunteers</p>
+        <ul class="actions">
+            <li><a href="{{url_for('locations')}}" class="button">Map of waste</a></li>
+        </ul>
+    </article>
+    <article class="item">
+        <header>
+            <a href="{{url_for('contact')}}"><img
+                    src="https://images.pexels.com/photos/1000445/pexels-photo-1000445.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    alt="Plastic litter" class="images" /></a>
+            <h2>Become a volunteer</h2>
+        </header>
+        <p>We gather on the 1st Sunday of every month to clean up an illegal dump.<br> Make a difference and become one
+            of our volunteers!</p>
+        <ul class="actions">
+            <li><a href="{{url_for('contact')}}" class="button">Contact Us</a></li>
+        </ul>
+    </article>
+</section>
+
+{% endblock %}
