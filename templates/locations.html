@@ -13,7 +13,7 @@
 <section id="main" class="main items">
   {% for location in locations %}
   <article class="item itemsLocations">
-    <h2 class="address">{{location.address}}</h2>
+    <h2 class="address">{{location.address_of_location}}</h2>
     <p><i class="fas fa-map-marker-alt"></i> (Latitude :<span class="lat">{{location.latitude_of_location}}</span>, Longitude : <span class="long">{{location.longitude_of_location}}</span>)</p>
     <ul class="actions">
       <li><a href="{{url_for('location_details', location_id=location._id)}}"class="button">More Details</a></li>
@@ -33,14 +33,6 @@
   <div class="form-group">
     <label for="exampleFormControlFile1">Upload a picture of the location</label>
     <input type="file" class="form-control-file" name="picture" id="exampleFormControlFile1" required>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="text" class="form-control" id="inputName" name="name" placeholder="Name" required>
-    </div>
-    <div class="form-group col-md-6">
-      <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" required>
-    </div>
   </div>
   <button type="submit" class="btn btn-info" >Submit</button>
 </form>
