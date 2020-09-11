@@ -1,16 +1,32 @@
 {% extends 'base.html' %} {% block content %}
+<section class="titleContainer">
+    <h1 class="title">Clean Up Cork City</h1>
+    <p>-Register-</p>
+</section>
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
+            {% for message in get_flashed_messages() %}
+            <p class="alert-error">Error: {{ message }}</p>
+            {% endfor %}
             <form method=POST action="{{ url_for('register') }}">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Username">
+                    <input type="text" class="form-control" name="username" placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="pass" placeholder="Password">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="pass" placeholder="Choose a Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="home_address" placeholder="Home Address" required>
+                </div>
+                <div class="form-group">
+                    <label for="dateofbirth">Date of Birth</label>
+                    <input type="date" id="dateofbirth" class="form-control" name="date_of_birth" required>
+                </div>
+                
                 <button type="submit" class="btn btn-primary btn-block">Register</button>
             </form>
             <br>
