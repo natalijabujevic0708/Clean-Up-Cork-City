@@ -1,18 +1,28 @@
 {% extends 'base.html' %} {% block content %}
 <section class="titleContainer">
   <h1 class="title">Clean Up Cork City</h1>
-  <p>-Edit an existing location-</p>
+  <p>-Was this location cleaned? <br>Give us all the info!-</p>
 </section>
-<form action="{{ url_for('update_location', location_id=location._id) }}" method="POST">
-  <div class="form-group">
-    <label for="inputAddress">Input the location of the dump</label>
-    <input type="text" class="form-control" name="address" id="inputAddress" required value="{{location.address}}">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <form action="{{ url_for('update_location', location_id=location._id) }}" method="POST">
+        <div class="form-group">
+          <label for="dateofcleanup">When was he location cleaned</label>
+          <input type="date" id="dateofcleanup" class="form-control" name="date_of_cleanup" required>
+        </div>
+        <div class="form-group">
+          <label class="label" for="numberofpeople">How many people participated in the clean up?</label>
+          <input type="number" class="form-control-file" name="numberofpeople" id="numberofpeople" required>
+        </div>
+        <div class="form-group">
+          <label class="label" for="picture">Upload a picture of the location after the cleanup!</label>
+          <input type="file" class="form-control-file" name="picture" id="picture" value="{{location.picture}}">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Upload a picture</label>
-    <input type="file" class="form-control-file" name="picture" id="exampleFormControlFile1" required
-      value="{{location.picture}}">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
+
 {% endblock %}
