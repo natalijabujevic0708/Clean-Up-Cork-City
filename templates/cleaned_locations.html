@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Title -->
+<section class="titleContainer">
+  <h1 class="title">Clean Up Cork city</h1>
+  <ul class="actions">
+    <li><a href="{{url_for('locations')}}" class="button">- Active dumps -</a></li>
+    <li><a href="{{url_for('cleaned_locations')}}" class="button active">- Cleaned Locations -</a></li>
+  </ul>
+</section>
+<!-- Map -->
+<div id="map"></div>
+<!-- List of locations -->
+<section id="main" class="main items">
+  {% for location in locations %}
+  {% if location.status == 'cleaned' %}
+  <article class="item itemsLocations">
+    <h2 class="address">{{location.address_of_location}}</h2>
+    <p><i class="fas fa-map-marker-alt"></i> (Latitude :<span class="lat">{{location.latitude_of_location}}</span>, Longitude : <span class="long">{{location.longitude_of_location}}</span>)</p>
+    <ul class="actions">
+      <li><a href="{{url_for('location_details', location_id=location._id)}}"class="button">More Details</a></li>
+    </ul>
+  </article>
+  {% endif %}
+  {% endfor %}
+</section>
+
+{% endblock %}
+
+    
