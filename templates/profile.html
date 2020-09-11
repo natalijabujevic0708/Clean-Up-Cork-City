@@ -1,3 +1,11 @@
 {% extends 'base.html' %} {% block content %}
-<h2>You are logged in as {{session['username']}}</h2>
+<section class="titleContainer">
+  <h1 class="title">Clean Up Cork City</h1>
+  <p>-Profile-</p>
+</section>
+<p>You are logged in as {{session['username']}}</p>
+<ul class="actions">
+  <li><a href="{{url_for('locations')}}" class="button">Go to the map of locations</a></li>
+</ul>
+
 {% endblock %}
