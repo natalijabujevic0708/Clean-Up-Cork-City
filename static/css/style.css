@@ -2,6 +2,15 @@
 body {
     text-align: center;
 }
+.row {
+    justify-content: center;
+}
+.label {
+    padding: 2vh;
+}
+.alert-error{
+    color: red;
+}
 /*------------------------- Navigation */
 .navbar {
     text-align: left;
@@ -52,6 +61,7 @@ body {
     font-size: 1.75rem;
     padding-top: 0.5rem;
 }
+
 /*------------------------- Title */
 .titleContainer {
     margin: 5vh;
@@ -89,6 +99,9 @@ body {
 ul.actionsLocationDetails {
     margin: 2em 0 1em;
 }
+#cardImage {
+    width: auto;
+}
 /*------------------------- locations.html */
 #main .itemsLocations {
     width: fit-content;
@@ -97,3 +110,15 @@ ul.actionsLocationDetails {
 #map {
     height: 50vh;
 }
+.active {
+    background-color: rgba(128, 128, 128, 0.3);
+}
+/*------------------------- Media Queries */
+@media only screen and (min-width: 768px){
+    .itemAbout{
+        width: 70%;
+        margin-left: 15%;
+    }
+}
+
+  
