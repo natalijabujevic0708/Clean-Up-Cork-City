@@ -3,24 +3,29 @@
 <section class="titleContainer">
   <h1 class="title">Clean Up Cork city</h1>
   <ul class="actions">
-    <li><a id="scrollLinkMap"  class="button">- Map of locations -</a></li>
-    <li><a id="scrollLinkForm" class="button">- Add a location -</a></li>
+    <li><a href="{{url_for('locations')}}" class="button active">- Active dumps -</a></li>
+    <li><a href="{{url_for('cleaned_locations')}}" class="button">- Cleaned Locations -</a></li>
   </ul>
 </section>
+{% for message in get_flashed_messages() %}
+<p class="alert-error">Error: {{ message }}</p>
+{% endfor %}
 <!-- Map -->
 <div id="map"></div>
 <!-- List of locations -->
 <section id="main" class="main items">
   {% for location in locations %}
+  {% if location.status == 'not_cleaned' %}
   <article class="item itemsLocations">
     <h2 class="address">{{location.address_of_location}}</h2>
     <p><i class="fas fa-map-marker-alt"></i> (Latitude :<span class="lat">{{location.latitude_of_location}}</span>, Longitude : <span class="long">{{location.longitude_of_location}}</span>)</p>
     <ul class="actions">
       <li><a href="{{url_for('location_details', location_id=location._id)}}"class="button">More Details</a></li>
-      <li><a  href="{{url_for('edit_location', location_id=location._id)}}" class="button">Edit Location</a></li>
+      <li><a  href="{{url_for('edit_location', location_id=location._id)}}" class="button">Mark location as cleaned!</a></li>
       <li><a href="{{url_for('delete_location', location_id=location._id)}}" class="button">Delete Location</a></li>
     </ul>
   </article>
+  {% endif %}
   {% endfor %}
 </section>
 <!-- Form -->
