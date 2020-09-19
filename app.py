@@ -343,11 +343,19 @@ def insert_location():
     return redirect(url_for('locations'))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 
 >>>>>>> e4f685d... Deleted the contact route, modified the key value pairs for edit and insert location (created a key status), added flash messages for invalid login
 =======
 >>>>>>> b80accd... Create new routes -  cleaned_location_details, profile_edit_location,   profile_edit_locationandpicture, profile_update_location, profile_update_locationandpicture
+=======
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect('/')
+
+>>>>>>> 75dd38f... Create log out option
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
