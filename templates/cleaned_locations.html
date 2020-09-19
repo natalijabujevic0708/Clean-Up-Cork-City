@@ -17,7 +17,7 @@
     <h2 class="address">{{location.address_of_location}}</h2>
     <p><i class="fas fa-map-marker-alt"></i> (Latitude :<span class="lat">{{location.latitude_of_location}}</span>, Longitude : <span class="long">{{location.longitude_of_location}}</span>)</p>
     <ul class="actions">
-      <li><a href="{{url_for('location_details', location_id=location._id)}}"class="button">More Details</a></li>
+      <li><a href="{{url_for('cleaned_location_details', location_id=location._id)}}"class="button">More Details</a></li>
     </ul>
   </article>
   {% endif %}
