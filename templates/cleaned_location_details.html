@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<article class="item container">
+    <header class="headerLocationDetails row">
+        <img src="{{src}}" id="cardImage" class="images col-6" />
+        <img src="{{src_cleaned}}" id="cardImage" class="images col-6" />
+    </header>
+    <p>Address : {{address}}<br> Uploaded by {{name}} on {{date}}</p>
+    <ul class="actions actionsLocationDetails">
+        <li><a href="{{url_for('cleaned_locations')}}" class="button">Go back to the map</a></li>
+    </ul>
+</article>
+{% endblock %}
