@@ -187,12 +187,25 @@ def delete_location_update(location_id):
     mongo.db.active_locations.remove(the_location)
     return redirect(url_for('locations'))
 
-# clened_locations.html
+# cleaned_locations.html
 
 
 @app.route('/cleaned_locations')
 def cleaned_locations():
     return render_template("cleaned_locations.html", locations=mongo.db.active_locations.find())
+
+
+@app.route('/cleaned_location_details/<location_id>')
+def cleaned_location_details(location_id):
+    the_location_details = mongo.db.active_locations.find_one(
+        {"_id": ObjectId(location_id)})
+    address = the_location_details['address_of_location']
+    name = the_location_details['uploaded_by']
+    date = the_location_details['date_of_clenup']
+    src = url_for('picture', picture_name=the_location_details['picture_name'])
+    src_cleaned = url_for(
+        'picture', picture_name=the_location_details['cleaned_picture_name'])
+    return render_template('cleaned_location_details.html', src=src, src_cleaned=src_cleaned, address=address, name=name, date=date)
 
 # register.html
 
@@ -235,7 +248,7 @@ def login():
     if login_user:
         if request.form['pass'] == login_user['password']:
             session['username'] = request.form['username']
-            return render_template('profile.html')
+            return render_template('profile.html', locations=mongo.db.active_locations.find())
 
     flash("Invalid username/password combination")
     return render_template('login.html')
@@ -246,8 +259,61 @@ def login():
 @app.route('/profile_page')
 def profile_page():
     if 'username' in session:
-        return render_template('profile.html')
+        return render_template('profile.html', locations=mongo.db.active_locations.find())
     return render_template('login.html')
+
+
+@app.route('/profile_edit_location/<location_id>')
+def profile_edit_location(location_id):
+    the_location_details = mongo.db.active_locations.find_one(
+        {"_id": ObjectId(location_id)})
+    src = url_for('picture', picture_name=the_location_details['picture_name'])
+    return render_template('profile_edit_location.html', location=the_location_details,  src=src)
+
+@app.route('/profile_edit_locationandpicture/<location_id>')
+def profile_edit_locationandpicture(location_id):
+    the_location_details = mongo.db.active_locations.find_one(
+        {"_id": ObjectId(location_id)})
+    return render_template('profile_edit_location+picture.html', location=the_location_details)
+
+
+@app.route('/profile_update_location/<location_id>', methods=["POST"])
+def profile_update_location(location_id):
+    location = mongo.db.active_locations.find_one(
+        {"_id": ObjectId(location_id)})
+    locations = mongo.db.active_locations
+    locations.update({'_id': ObjectId(location_id)},
+                     {'status': location['status'],
+                      'address_of_location': request.form.get('address'),
+                      'picture_name': location['picture_name'],
+                      'uploaded_by':  session['username'],
+                      'date': time.strftime("%Y-%m-%d %H:%M:%S"),
+                      'latitude_of_location': location['latitude_of_location'],
+                      'longitude_of_location': location['longitude_of_location'],
+                      })
+    return render_template('profile.html', locations=mongo.db.active_locations.find())
+
+
+@app.route('/profile_update_locationandpicture/<location_id>', methods=["POST"])
+def profile_update_locationandpicture(location_id):
+    location = mongo.db.active_locations.find_one(
+        {"_id": ObjectId(location_id)})
+    locations = mongo.db.active_locations
+    picture = request.files['picture']
+    mongo.save_file(picture.filename, picture)
+    locations = mongo.db.active_locations
+    locations.update({'_id': ObjectId(location_id)},
+                     {'status': location['status'],
+                      'address_of_location': request.form.get('address'),
+                      'picture_name':  picture.filename,
+                      'uploaded_by':  session['username'],
+                      'date': time.strftime("%Y-%m-%d %H:%M:%S"),
+                      'latitude_of_location': location['latitude_of_location'],
+                      'longitude_of_location': location['longitude_of_location'],
+                      })
+
+    return render_template('profile.html', locations=mongo.db.active_locations.find())
+
 
 # to insert a location on locations.html
 
@@ -276,9 +342,12 @@ def insert_location():
     flash("Please log in to add a location")
     return redirect(url_for('locations'))
 
+<<<<<<< HEAD
     
 
 >>>>>>> e4f685d... Deleted the contact route, modified the key value pairs for edit and insert location (created a key status), added flash messages for invalid login
+=======
+>>>>>>> b80accd... Create new routes -  cleaned_location_details, profile_edit_location,   profile_edit_locationandpicture, profile_update_location, profile_update_locationandpicture
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
