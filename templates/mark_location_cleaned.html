@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<section class='title_container'>
+  <h1 class='title'>Clean Up Cork City</h1>
+  <p>-Was this location cleaned? <br>Give us all the info!-</p>
+</section>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-4 col-md-offset-4'>
+      <form action="{{ url_for('update_location', location_id=location._id) }}" method='POST'>
+        <div class='form-group'>
+          <label for='date_of_cleanup'>When was he location cleaned</label>
+          <input type='date' id='date_of_cleanup' class='form-control' name='date_of_cleanup' required>
+        </div>
+        <div class='form-group'>
+          <label class='label' for='number_of_people'>How many people participated in the clean up?</label>
+          <input type='number' class='form-control-file' name='number_of_people' id='number_of_people' required>
+        </div>
+        <div class='form-group'>
+          <label class='label' for='picture'>Upload a picture of the location after the cleanup!</label>
+          <input type='file' class='form-control-file' name='picture' id='picture'>
+        </div>
+        <button type='submit' class='btn btn-primary btn-block'>Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

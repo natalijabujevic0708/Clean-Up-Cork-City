@@ -1,46 +1,46 @@
 {% extends 'base.html' %} {% block content %}
 <!-- Title -->
-<section class="titleContainer">
-  <h1 class="title">Clean Up Cork city</h1>
-  <ul class="actions">
-    <li><a href="{{url_for('locations')}}" class="button active">- Active dumps -</a></li>
-    <li><a href="{{url_for('cleaned_locations')}}" class="button">- Cleaned Locations -</a></li>
+<section class='title_container'>
+  <h1 class='title'>Clean Up Cork City</h1>
+  <ul class='actions'>
+    <li><a href="{{url_for('locations')}}" class='button active'>- Active dumps -</a></li>
+    <li><a href="{{url_for('cleaned_locations')}}" class='button'>- Cleaned Locations -</a></li>
   </ul>
 </section>
 {% for message in get_flashed_messages() %}
-<p class="alert-error">Error: {{ message }}</p>
+<p class='alert-error'>Error: {{ message }}</p>
 {% endfor %}
 <!-- Map -->
-<div id="map"></div>
+<div id='map'></div>
 <!-- List of locations -->
-<section id="main" class="main items">
+<section id='main' class='main items'>
   {% for location in locations %}
   {% if location.status == 'not_cleaned' %}
-  <article class="item itemsLocations">
-    <h2 class="address">{{location.address_of_location}}</h2>
-    <p><i class="fas fa-map-marker-alt"></i> (Latitude :<span class="lat">{{location.latitude_of_location}}</span>, Longitude : <span class="long">{{location.longitude_of_location}}</span>)</p>
-    <ul class="actions">
-      <li><a href="{{url_for('location_details', location_id=location._id)}}"class="button">More Details</a></li>
-      <li><a  href="{{url_for('edit_location', location_id=location._id)}}" class="button">Mark location as cleaned!</a></li>
-      <li><a href="{{url_for('delete_location', location_id=location._id)}}" class="button">Delete Location</a></li>
+  <article class='item items_locations'>
+    <h2 class='address'>{{location.address_of_location}}</h2>
+    <p><i class='fas fa-map-marker-alt'></i> (Latitude :<span class="lat">{{location.latitude_of_location}}</span>,
+      Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
+    <ul class='actions'>
+      <li><a href="{{url_for('location_details', location_id=location._id)}}" class='button'>More Details</a></li>
+      <li><a href="{{url_for('mark_location_cleaned', location_id=location._id)}}" class='button'>Mark location as cleaned!</a>
+      </li>
+      <li><a href="{{url_for('delete_location', location_id=location._id)}}" class='button'>Delete Location</a></li>
     </ul>
   </article>
   {% endif %}
   {% endfor %}
 </section>
 <!-- Form -->
-<form action="{{ url_for('insert_location')}}" method="POST" enctype="multipart/form-data" id="addressForm">
+<form action="{{ url_for('insert_location')}}" method='POST' enctype='multipart/form-data' id='addressForm'>
   <h2>Did you see a litter dump in Cork City?</h2>
   <p>Add the details here!</p>
-  <div class="form-group">
-    <input type="text" class="form-control" name="address" id="inputAddress" data-geocomplete="street address" required>
+  <div class='form-group'>
+    <input type='text' class='form-control' name='address' id='inputAddress' data-geocomplete='street address' required>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Upload a picture of the location</label>
-    <input type="file" class="form-control-file" name="picture" id="exampleFormControlFile1" required>
+  <div class='form-group'>
+    <label for='exampleFormControlFile1'>Upload a picture of the location</label>
+    <input type='file' class='form-control-file' name='picture' id='exampleFormControlFile1' required>
   </div>
-  <button type="submit" class="btn btn-info" >Submit</button>
+  <button type='submit' class='btn btn-info'>Submit</button>
 </form>
 {% endblock %}
-
-    

@@ -17,8 +17,8 @@ function initMap() {
         }
     });
     //creating markers
-    var itemsLocations = document.querySelectorAll(".itemsLocations");
-    for (var i = 0; i < itemsLocations.length; i++) {
+    var items_locations = document.querySelectorAll(".items_locations");
+    for (var i = 0; i < items_locations.length; i++) {
         var marker = new google.maps.Marker({
             position: { lat: parseFloat(this.document.getElementsByClassName('lat')[i].innerHTML), lng: parseFloat(this.document.getElementsByClassName('long')[i].innerHTML) },
             map: map,

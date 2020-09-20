@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clean Up Cork</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Clean Up Cork City</title>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/TEMPLATED.css') }}" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
-        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+    <link rel='stylesheet' href="{{ url_for('static', filename='css/TEMPLATED.css') }}" type='text/css' />
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css'
+        integrity='sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX' crossorigin='anonymous'>
+    <link rel='stylesheet' href="{{ url_for('static', filename='css/style.css') }}" type='text/css' />
     <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.js'
+        integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60='' crossorigin=' anonymous'></script>
 </head>
 
 <body>
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent'
+            aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+            <span class='navbar-toggler-icon'></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+        <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul class='navbar-nav mr-auto'>
+                <li class='nav-item'>
+                    <a class='nav-link' href="{{ url_for('index') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                <li class='nav-item'>
+                    <a class='nav-link' href="{{ url_for('about') }}">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('locations') }}">Locations</a>
+                <li class='nav-item'>
+                    <a class='nav-link' href="{{ url_for('locations') }}">Locations</a>
                 </li>
                 {% if 'username' not in session %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login_page') }}"> Log in / Sign Up</a>
+                <li class='nav-item'>
+                    <a class='nav-link' href="{{ url_for('login_page') }}"> Log in / Sign Up</a>
                 </li>
                 {% endif %}
             </ul>
             {% if 'username' in session %}
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link icon fa-user-circle" href="{{ url_for('profile_page') }}"></a>
+            <ul class='navbar-nav ml-auto'>
+                <li class='nav-item'>
+                    <a class='nav-link icon fa-user-circle' href="{{ url_for('profile_page') }}"></a>
                 </li>
             </ul>
             {% endif %}
@@ -50,29 +50,29 @@
     </nav>
     {% block content %} {% endblock %}
     <!-- Footer -->
-    <footer id="footer">
-        <ul class="icons">
-            <li><a target="_blank" href="https://twitter.com/explore" class="icon fa-twitter"><span
-                        class="label">Twitter</span></a></li>
-            <li><a target="_blank" href="https://www.facebook.com/" class="icon fa-facebook"><span
-                        class="label">Facebook</span></a></li>
+    <footer id='footer'>
+        <ul class='icons'>
+            <li><a target='_blank' href='https://twitter.com/explore' class='icon fa-twitter'><span
+                        class='label'>Twitter</span></a></li>
+            <li><a target='_blank' href='https://www.facebook.com/'' class=' icon fa-facebook'><span
+                        class='label'>Facebook</span></a></li>
         </ul>
     </footer>
     <!-- scroll.js -->
     <script src="{{ url_for('static', filename='js/scroll.js')}}"></script>
     <!-- JQuery Geocomplete -->
-    <script src="https://cdn.jsdelivr.net/npm/geocomplete@1.7.0/jquery.geocomplete.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/geocomplete@1.7.0/jquery.geocomplete.min.js'></script>
     <!-- map.js -->
     <script src="{{ url_for('static', filename='js/map.js')}}"></script>
     <!-- Font Awesome -->
     <script src="https://use.fontawesome.com/ad127ebdf9.js"></script>
     <!-- Google Maps -->
-    <script async defer type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places&callback=initMap"></script>
+    <script async defer type='text/javascript'
+        src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places&callback=initMap'></script>
     <!-- Bootstrap -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
-        integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
-        crossorigin="anonymous"></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js'
+        integrity='sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J'
+        crossorigin='anonymous'></script>
 </body>
 
 </html>

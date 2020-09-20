@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content %}
-<section class="titleContainer">
-  <h1 class="title">Clean Up Cork City</h1>
+<section class='title_container'>
+  <h1 class='title'>Clean Up Cork City</h1>
   <p>-Delete a location : {{location.address_of_location}} -</p>
 </section>
-<form action="{{ url_for('delete_location_update', location_id=location._id) }}" method="POST">
-  <div class="form-group">
-    <label for="reasonForm">Why are you deleting this location?</label>
-    <textarea type="file" class="form-control" name="reason" id="reasonForm" required></textarea>
+<form action="{{ url_for('delete_location_update', location_id=location._id) }}" method='POST'>
+  <div class='form-group'>
+    <label for='reason_form'>Why are you deleting this location?</label>
+    <textarea type='textarea' class='form-control' name='reason' id='reason_form' required></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type='submit' class='btn btn-primary'>Submit</button>
 </form>
 {% endblock %}

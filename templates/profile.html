@@ -1,26 +1,26 @@
 {% extends 'base.html' %} {% block content %}
-<section class="titleContainer">
-  <h1 class="title">Clean Up Cork City</h1>
+<section class='title_container'>
+  <h1 class='title'>Clean Up Cork City</h1>
   <p>-Profile-</p>
 </section>
 <p>You are logged in as {{session['username']}}</p>
 <p>The location you uploaded:</p>
 {% for location in locations %}
 {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
-<article class="item itemsLocations">
-  <h2 class="address">{{location.address_of_location}}</h2>
-  <p><i class="fas fa-map-marker-alt"></i> (Latitude :<span class="lat">{{location.latitude_of_location}}</span>,
-    Longitude : <span class="long">{{location.longitude_of_location}}</span>)</p>
-  <ul class="actions">
-    <li><a href="{{url_for('profile_edit_location', location_id=location._id)}}" class="button">Edit locations</a></li>
+<article class='item items_locations'>
+  <h2 class='address'>{{location.address_of_location}}</h2>
+  <p><i class='fas fa-map-marker-alt'></i> (Latitude :<span class='lat'>{{location.latitude_of_location}}</span>,
+    Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
+  <ul class='actions'>
+    <li><a href="{{url_for('profile_edit_location', location_id=location._id)}}" class='button'>Edit locations</a></li>
   </ul>
 </article>
 {% endif %}
 {% endfor %}
-<ul class="actions">
-  <li><a href="{{url_for('locations')}}" class="button">Go to the map of locations</a></li>
+<ul class='actions'>
+  <li><a href="{{url_for('locations')}}" class='button'>Go to the map of locations</a></li>
 </ul>
-<ul class="actions">
-  <li><a href="{{url_for('logout')}}" class="button">Logout</a></li>
+<ul class='actions'>
+  <li><a href="{{url_for('logout')}}" class='button'>Logout</a></li>
 </ul>
 {% endblock %}
