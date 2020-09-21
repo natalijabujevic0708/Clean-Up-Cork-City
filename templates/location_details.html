@@ -3,7 +3,11 @@
     <header class='header_location_details'>
         <img src='{{src}}'' id='card_image' class='images' />
     </header>
-    <p>Address : {{address}}<br> Uploaded by {{name}} on {{date}}</p>
+    <div class='location_details'>
+        <p><span class='bold'>Address</span>: {{address}}</p>
+        <p><span class='bold'>Uploaded by</span>: {{name}}</p> 
+        <p><span class='bold'>Date and time</span>: {{date}}</p>
+    </div>
     <ul class='actions actions_location_details'>
         <li><a href="{{url_for('locations')}}" class='button'>Go back to the map</a></li>
     </ul>
