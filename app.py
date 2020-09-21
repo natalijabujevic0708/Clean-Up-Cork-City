@@ -1,10 +1,6 @@
 import os
 import time
-<<<<<<< HEAD
-from flask import Flask, render_template, redirect, request, url_for
-=======
 from flask import Flask, render_template, redirect, request, url_for, session, flash
->>>>>>> e4f685d... Deleted the contact route, modified the key value pairs for edit and insert location (created a key status), added flash messages for invalid login
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from geopy.geocoders import Nominatim
@@ -36,7 +32,6 @@ def locations():
 
 # to render the picture from MongoDB
 
-<<<<<<< HEAD
 @app.route('/insert_location', methods=['POST'])  # form on locations.html
 def insert_location():
     if 'picture' in request.files:
@@ -58,8 +53,6 @@ def insert_location():
             'longitude_of_location': loc.longitude
             })
         return redirect(url_for('locations'))
-=======
->>>>>>> e4f685d... Deleted the contact route, modified the key value pairs for edit and insert location (created a key status), added flash messages for invalid login
 
 @app.route('/<picture_name>')
 def picture(picture_name):
@@ -83,10 +76,6 @@ def location_details(location_id):
 
 @app.route('/edit_location/<location_id>')
 def edit_location(location_id):
-<<<<<<< HEAD
-    the_location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    return render_template('edit_location.html', location=the_location)
-=======
     if 'username' in session:
         the_location = mongo.db.active_locations.find_one(
             {"_id": ObjectId(location_id)})
@@ -94,34 +83,10 @@ def edit_location(location_id):
     return render_template('login.html')
 
 # to update a location
->>>>>>> e4f685d... Deleted the contact route, modified the key value pairs for edit and insert location (created a key status), added flash messages for invalid login
 
 
 @app.route('/update_location/<location_id>', methods=["POST"])
 def update_location(location_id):
-<<<<<<< HEAD
-    locations = mongo.db.locations
-    # using geolocator to determine latitude and longitude
-    geolocator = Nominatim(user_agent="natalijabujevic0708@gmail.com")
-    address = request.form.get('address')
-    loc = geolocator.geocode(address)
-    locations.update({'_id': ObjectId(location_id)},
-    {   'status' : 'active',
-        'address_of_location': address,
-        'picture_name': request.form.get('picture'),
-        'uploaded_by': request.form.get('name'),
-        'email': request.form.get('email'),
-        'date': time.strftime("%Y-%m-%d %H:%M:%S"),
-        'latitude_of_location': loc.latitude,
-        'longitude_of_location': loc.longitude
-        })
-    return redirect(url_for('locations'))
-
-@app.route('/delete_location/<location_id>')
-def delete_location(location_id):
-    the_location = mongo.db.locations.find_one({"_id": ObjectId(location_id)})
-    return render_template('delete_location.html', location=the_location)
-=======
     location = mongo.db.active_locations.find_one(
         {"_id": ObjectId(location_id)})
     locations = mongo.db.active_locations
@@ -131,7 +96,8 @@ def delete_location(location_id):
                       'picture_name': location['picture_name'],
                       'cleaned_picture_name': request.form.get('picture'),
                       'uploaded_by':  session['username'],
-                      'date_of_clenup': request.form.get('date_of_cleanup'),
+                      'date_of_cleanup': request.form.get('date_of_cleanup'),
+                      'number_of_people': request.form.get('number_of_people'),
                       'latitude_of_location': location['latitude_of_location'],
                       'longitude_of_location': location['longitude_of_location'],
                       })
@@ -147,7 +113,6 @@ def delete_location(location_id):
             {"_id": ObjectId(location_id)})
         return render_template('delete_location.html', location=the_location)
     return render_template('login.html')
->>>>>>> e4f685d... Deleted the contact route, modified the key value pairs for edit and insert location (created a key status), added flash messages for invalid login
 
 # to delete a location
 
@@ -197,15 +162,30 @@ def cleaned_locations():
 
 @app.route('/cleaned_location_details/<location_id>')
 def cleaned_location_details(location_id):
+<<<<<<< HEAD
+=======
+    """
+    Find the current location by the location_id, and set the necessary variables needed for the template (src, src_cleaned, address, name, date and
+    number of people).
+    """
+    
+>>>>>>> d95e7c1... Add key:value pair number_of_people
     the_location_details = mongo.db.active_locations.find_one(
         {"_id": ObjectId(location_id)})
     address = the_location_details['address_of_location']
     name = the_location_details['uploaded_by']
+<<<<<<< HEAD
     date = the_location_details['date_of_clenup']
     src = url_for('picture', picture_name=the_location_details['picture_name'])
     src_cleaned = url_for(
         'picture', picture_name=the_location_details['cleaned_picture_name'])
     return render_template('cleaned_location_details.html', src=src, src_cleaned=src_cleaned, address=address, name=name, date=date)
+=======
+    date = the_location_details['date_of_cleanup']
+    number_of_people = the_location_details['number_of_people']
+    
+    return render_template('cleaned_location_details.html', src=src, src_cleaned=src_cleaned, address=address, name=name, date=date, number_of_people = number_of_people)
+>>>>>>> d95e7c1... Add key:value pair number_of_people
 
 # register.html
 
