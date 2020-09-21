@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<form action="{{ url_for('profile_update_locationandpicture', location_id=location._id) }}" method='POST'
+<form action="{{ url_for('profile_update_location_and_picture', location_id=location._id) }}" method='POST'
   enctype='multipart/form-data'>
   <div class='form-group'>
     <label for='input_address'>Input the location of the dump</label>
