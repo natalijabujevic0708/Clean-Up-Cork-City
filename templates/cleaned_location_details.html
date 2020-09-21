@@ -4,7 +4,16 @@
         <img src='{{src}}' id='cardImage' class='images col-6' />
         <img src='{{src_cleaned}}' id='cardImage' class='images col-6' />
     </header>
-    <p>Address : {{address}}<br> Uploaded by {{name}} on {{date}}</p>
+    <div class='row'>
+        <p class="col-6">BEFORE</p>
+        <p class="col-6">AFTER</p>
+    </div>
+    <div class='left_align'>
+        <p><span class='bold'>Address</span>: {{address}}</p>
+        <p><span class='bold'>Uploaded by</span>: {{name}}</p> 
+        <p><span class='bold'>Cleaned up on</span>: {{date}}</p>
+        <p class="bold">{{number_of_people}} people participated in the cleanup! </p>
+    </div>
     <ul class='actions actions_location_details'>
         <li><a href="{{url_for('cleaned_locations')}}" class='button'>Go back to the map</a></li>
     </ul>

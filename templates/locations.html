@@ -22,7 +22,8 @@
       Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
     <ul class='actions'>
       <li><a href="{{url_for('location_details', location_id=location._id)}}" class='button'>More Details</a></li>
-      <li><a href="{{url_for('mark_location_cleaned', location_id=location._id)}}" class='button'>Mark location as cleaned!</a>
+      <li><a href="{{url_for('mark_location_cleaned', location_id=location._id)}}" class='button'>Mark location as
+          cleaned!</a>
       </li>
       <li><a href="{{url_for('delete_location', location_id=location._id)}}" class='button'>Delete Location</a></li>
     </ul>
@@ -31,17 +32,20 @@
   {% endfor %}
 </section>
 <!-- Form -->
+{% if 'username' in session %}
 <form action="{{ url_for('insert_location')}}" method='POST' enctype='multipart/form-data' id='address_form'>
   <h2>Did you see a litter dump in Cork City?</h2>
   <p>Add the details here!</p>
   <p class="border"></p>
   <div class='form-group'>
-    <input type='text' class='form-control' name='address' id='input_address' data-geocomplete='street address' required>
+    <input type='text' class='form-control' name='address' id='input_address' data-geocomplete='street address'
+      required>
   </div>
   <div class='form-group'>
     <label for='picture'>Upload a picture of the location</label>
     <input type='file' class='form-control-file' name='picture' id='picture' required>
   </div>
-  <button type='submit' class='btn btn-info'>Submit</button>
+  <button type='submit' class='btn btn-primary btn-block'>Submit</button>
 </form>
+{% endif %}
 {% endblock %}

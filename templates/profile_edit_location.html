@@ -1,26 +1,28 @@
 {% extends 'base.html' %} {% block content %}
 <section>
+  <ul class="back_button">
+    <li class="left_align">
+        <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
+    </li>
+</section>
+<section>
   <h1 class='title'>Clean Up Cork City</h1>
-  <p>-Edit an existing location-</p>
+  <p>-Edit a location-</p>
 </section>
 <article class='item'>
   <header class='header_location_details'>
     <img src='{{src}}' id='card_image' class='images' />
   </header>
   <ul class='actions actions_location_details'>
-    <li><a href="{{url_for('profile_edit_location_and_picture', location_id=location._id)}}" class='button'>Do you want to
-        upload a new picture?</a></li>
+    <li><a href="{{url_for('profile_edit_location_and_picture', location_id=location._id)}}" class='button upload_new_picture'>Click here to upload a new picture</a></li>
   </ul>
   <form action="{{ url_for('profile_update_location', location_id=location._id) }}" method='POST'>
     <div class='form-group'>
-      <label for='input_address'>Input the location of the dump</label>
-      <input type='text' class='form-control' name='address' id='input_address' required
+      <label for='input_address'>Edit the address</label>
+      <input type='text' class='form-control' name='address' id='input_address'  data-geocomplete='street address' required
         value='{{location.address_of_location}}'>
     </div>
     <button type='submit' class='btn btn-primary'>Submit</button>
   </form>
-  <ul class='actions actions_location_details'>
-    <li><a href="{{url_for('locations')}}" class='button'>Go back to the map</a></li>
-  </ul>
 </article>
 {% endblock %}
