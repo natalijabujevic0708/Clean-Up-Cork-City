@@ -1,4 +1,4 @@
-@import url(font-awesome.min.css);
+
 @import url("https://fonts.googleapis.com/css?family=Pacifico|Source+Sans+Pro:200,400");
 
 /*
@@ -1135,7 +1135,6 @@
 					width: 100%;
 					height: 100%;
 					background-color: rgba(0, 0, 0, 0.25);
-					background-image: url("images/overlay.png");
 				}
 
 			.item header:hover a {
