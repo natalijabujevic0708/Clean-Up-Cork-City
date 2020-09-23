@@ -4,7 +4,7 @@
   <p>-Edit a location-</p>
 </section>
 <form action="{{ url_for('profile_update_location_and_picture', location_id=location._id) }}" method='POST'
-  enctype='multipart/form-data'>
+  enctype='multipart/form-data' class="form_edit_picture">
   <div class='form-group'>
     <label for='input_address'>Edit the address</label>
     <input type='text' class='form-control' name='address' id='input_address'  data-geocomplete='street address' required
@@ -14,6 +14,6 @@
     <label for='picture'>Upload a new picture</label>
     <input type='file' class='form-control-file' name='picture' id='picture' required>
   </div>
-  <button type='submit' class='btn btn-primary'>Submit</button>
+  <button type='submit' class='btn btn-primary btn-block'>Submit</button>
 </form>
 {% endblock %}

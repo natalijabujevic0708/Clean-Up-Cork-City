@@ -1,12 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 <!-- Title -->
-<section class='title_container'>
-  <h1 class='title'>Clean Up Cork City</h1>
-  <ul class='actions'>
-    <li><a href="{{url_for('locations')}}" class='button active'>- Active dumps -</a></li>
-    <li><a href="{{url_for('cleaned_locations')}}" class='button'>- Cleaned Locations -</a></li>
-  </ul>
-</section>
+<section class="background">
+  <div class="title_container ">
+      <h1 class="title">Clean Up Cork City</h1>
+      <ul class='actions'>
+        <li><a href="{{url_for('locations')}}" class='button active'>- Active dumps -</a></li>
+        <li><a href="{{url_for('cleaned_locations')}}" class='button'>- Cleaned Locations -</a></li>
+      </ul>
+  </div>
+  </section>
+
+
 {% for message in get_flashed_messages() %}
 <p class='alert-error'>Error: {{ message }}</p>
 {% endfor %}

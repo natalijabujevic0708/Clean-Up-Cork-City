@@ -1,8 +1,13 @@
 {% extends 'base.html' %} {% block content %}
-<section class="title_container">
-    <h1 class="title">Clean Up Cork City</h1>
-    <p>-About Us-</p>
+<section class="background">
+    <div class="title_container ">
+        <h1 class="title">Clean Up Cork City</h1>
+        <p class="bold">-About Us-</p>
+    </div>
+
+
 </section>
+
 <section id="main" class="container-fluid">
     <article class="item item_about">
         <header>
@@ -14,7 +19,7 @@
         <p>Littering is an ever-increasing worldwide problem. Chances are, you’ve seen litter scattered along roadsides,
             floating in waterways, or blowing across a parking lot. The well-being of people, animals, and the
             environment is compromised by litter.<br> Our mission is to try to help with gathering information about
-            illegal dumps in Cork City and to clean it up with the help of our volunteers</p>
+            illegal dumps in Cork City and to clean them up with the help of our volunteers</p>
         <ul class="actions">
             <li><a href="{{url_for('locations')}}" class="button">Map of waste</a></li>
         </ul>
@@ -26,8 +31,10 @@
                     alt="Plastic litter" class="images" /></a>
             <h2>Become a part of the change!</h2>
         </header>
-        <p>If you spot an area with unwanted trash around Cork City, register on our website, mark the location and we will
-            organize a cleanup with our volunteers. <br> If you want to become one of our volunteers just register for a cleanup event on your profile!
+        <p>If you spot an area with unwanted trash around Cork City, register on our website, mark the location and we
+            will
+            organize a cleanup with our volunteers. <br> If you want to become one of our volunteers just register for a
+            cleanup event on your profile!
         </p>
         <ul class="actions">
             <li><a href="{{url_for('login_page')}}" class="button">Sign Up</a></li>

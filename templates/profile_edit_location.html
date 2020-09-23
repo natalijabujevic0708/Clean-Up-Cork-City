@@ -16,13 +16,13 @@
   <ul class='actions actions_location_details'>
     <li><a href="{{url_for('profile_edit_location_and_picture', location_id=location._id)}}" class='button upload_new_picture'>Click here to upload a new picture</a></li>
   </ul>
-  <form action="{{ url_for('profile_update_location', location_id=location._id) }}" method='POST'>
+  <form action="{{ url_for('profile_update_location', location_id=location._id) }}" method='POST' class="form_edit_location">
     <div class='form-group'>
       <label for='input_address'>Edit the address</label>
       <input type='text' class='form-control' name='address' id='input_address'  data-geocomplete='street address' required
         value='{{location.address_of_location}}'>
     </div>
-    <button type='submit' class='btn btn-primary'>Submit</button>
+    <button type='submit' class='btn btn-primary btn-block'>Submit</button>
   </form>
 </article>
 {% endblock %}
