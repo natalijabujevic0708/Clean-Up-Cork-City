@@ -7,6 +7,7 @@ function addInfoWindow(marker, message) {
         infoWindow.open(map, marker);
     });
 }
+
 // creating the map
 function initMap() {
     var map = new google.maps.Map(document.getElementById("map"), {
@@ -17,7 +18,7 @@ function initMap() {
         }
     });
     //creating markers
-    var items_locations = document.querySelectorAll(".items_locations");
+    var items_locations = document.querySelectorAll(".address_of_locations");
     for (var i = 0; i < items_locations.length; i++) {
         var marker = new google.maps.Marker({
             position: { lat: parseFloat(this.document.getElementsByClassName('lat')[i].innerHTML), lng: parseFloat(this.document.getElementsByClassName('long')[i].innerHTML) },
@@ -25,17 +26,27 @@ function initMap() {
         });
         addInfoWindow(marker, this.document.getElementsByClassName('address')[i].innerHTML);
     };
-    // default bounds for autocomplete
-    var defaultBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(51.8722517, -8.53925228),
-        new google.maps.LatLng(51.91886165, -8.42110634))
-    var options = {
-        bounds: defaultBounds
-    };
-    var input = document.getElementById('addressForm')[0];
-    var autocomplete = new google.maps.places.Autocomplete(input, options)
-    var autocomplete = new google.maps.places.Autocomplete(input, { types: ['address'] });
+        // default bounds for autocomplete
+        var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(51.8722517, -8.53925228),
+            new google.maps.LatLng(51.91886165, -8.42110634))
+        var options = {
+            bounds: defaultBounds,
+            strictBounds: true,
+            types: ['address']
+        };
+        var input = document.getElementById('input_address');
+
+        autocomplete = new google.maps.places.Autocomplete(input, options)
+        
+
 }
+
+
+
+
+
+
 
 
 
