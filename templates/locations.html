@@ -20,7 +20,7 @@
 <section id='main' class='main items'>
   {% for location in locations %}
   {% if location.status == 'not_cleaned' %}
-  <article class='item items_locations'>
+  <article class='item items_locations address_of_locations'>
     <h2 class='address'>{{location.address_of_location}}</h2>
     <p class="lat_long"> (Latitude :<span class="lat">{{location.latitude_of_location}}</span>,
       Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
@@ -42,7 +42,7 @@
   <p>Add the details here!</p>
   <p class="border"></p>
   <div class='form-group'>
-    <input type='text' class='form-control' name='address' id='input_address' data-geocomplete='street address'
+    <input type='text' class='form-control input_address' name='address' id='input_address' data-geocomplete='street address'
       required>
   </div>
   <div class='form-group'>

@@ -1,5 +1,4 @@
 const canvasEl = document.querySelector('#canvas');
-var  canvas_location= document.querySelector('.canvas_location');
 
 const w = canvasEl.width = window.innerWidth;
 const h = canvasEl.height = 300;
@@ -16,7 +15,7 @@ function loop() {
 
 function Confetti () {
   //construct confetti
-  const colours = ['#98FB98', '#2E8B57', '#8FBC8F'];
+  const colours = ['#8FBC8F', '#2E8B57', '#006400'];
   
   this.x = Math.round(Math.random() * w);
   this.y = Math.round(Math.random() * h)-(h/2);

@@ -25,6 +25,10 @@ body>* {
     font-weight: 600;
 }
 
+.bold_500 {
+    font-weight: 500;
+}
+
 .left_align {
     text-align: left;
 }
@@ -46,6 +50,7 @@ body>* {
 .navbar-light .navbar-toggler {
     height: auto;
 }
+
 /*------------------------- Header */
 
 .hero_image {
@@ -89,7 +94,7 @@ body>* {
 .title_container {
     padding: 5vh 0;
     position: relative;
-    background: rgb(255 255 255 / 25%)
+    background: rgb(255 255 255 / 30%)
 }
 
 .title {
@@ -113,7 +118,9 @@ body>* {
 .title_container .actions li, .title_container .actions li:last-child {
     padding: 2vh;
 }
+
 /*------------------------- Background and Canvas */
+
 canvas {
     position: absolute;
     top: 0;
@@ -123,16 +130,26 @@ canvas {
     z-index: -1;
 }
 
+.background, canvas {
+    border-bottom: 1px solid black;
+}
+
 .background {
     position: relative;
     background-image: url("../gif/flower.gif");
     background-position: center;
     background-size: auto;
 }
+
 /*------------------------- locations.html */
 
+.address {
+    font-size: 4vh;
+}
+
 .lat_long {
-    font-size: 2vh;
+    visibility: hidden;
+    height: 2vh;
 }
 
 .background .actions .button {
@@ -148,7 +165,7 @@ canvas {
 }
 
 .background .actions .button.active {
-    background-color: rgba(128, 128, 128, 0.9);
+    background-color: rgba(128, 128, 128, 0.95);
     color: white !important;
 }
 
@@ -181,6 +198,11 @@ canvas {
     margin: 0 12vh;
 }
 
+.btn {
+    background-color: #058e42c2;
+    border-color: #006400;
+}
+
 /*------------------------- location_details.html */
 
 .images {
@@ -201,7 +223,6 @@ ul.actions_location_details {
     width: auto;
 }
 
-
 /*------------------------- mark_location_cleaned.html */
 
 .form_background, .items_locations {
@@ -211,6 +232,7 @@ ul.actions_location_details {
 .back_button {
     list-style: none;
     margin: 1vh;
+    padding-left: 0;
 }
 
 .back_button li a {
@@ -233,12 +255,20 @@ ul.actions_location_details {
     margin-top: 4vh;
 }
 
+.profile_item {
+    padding-top: 0;
+}
+
 /*------------------------- profile_edit_location.html */
 
 .upload_new_picture {
     white-space: normal;
     height: auto;
     line-height: 2.5em;
+}
+
+#upload_new_picture {
+    display: none;
 }
 
 /*------------------------- Media Queries */
@@ -296,21 +326,38 @@ ul.actions_location_details {
     .items_locations ul li {
         padding: 2vh 2vh;
     }
-    #address_form button, .form_edit_location button, .form_edit_picture button, #address_form input {
-        width: 50%;
-        margin-left: 25vw;
-    }
     .container form input, .container form button, .form_edit_location button, .form_edit_location input, .form_edit_picture button, .form_edit_picture input {
         font-size: 2.5vh;
     }
-    #input_address, .form_edit_picture input {
+    #input_address, .form_edit_picture input, .map_profile {
         width: 50%;
         margin-left: 25vw;
+    }
+    .btn {
+        width: 50%;
+        margin: auto;
     }
 }
 
 @media only screen and (min-width: 1200px) {
     .item_about {
         margin: 5vh 10vw;
+    }
+    .btn {
+        width: 35%;
+    }
+    .profile_picture, #upload_new_picture form {
+        width: 50%;
+        margin: auto;
+    }
+    .profile_picture {
+        margin-top: 5vh;
+    }
+    #upload_new_picture {
+        margin-bottom: 4vh;
+    }
+    .form_edit_picture input {
+        font-size: 2vh;
+        margin-left: 25%;
     }
 }
