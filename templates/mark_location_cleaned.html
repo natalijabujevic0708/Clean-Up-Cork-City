@@ -2,7 +2,7 @@
 <section>
   <ul class="back_button">
     <li class="left_align">
-        <a href="{{ url_for('locations') }}" class='icon fas fa-arrow-circle-left'></a>
+        <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
     </li>
 </section>
 <section class='title_container'>
@@ -15,10 +15,10 @@
 <div class='container form_background margin_bottom'>
   <div class='row'>
     <div class='col-md-6'>
-      <form action="{{ url_for('update_location', location_id=location._id) }}" method='POST'>
+      <form action="{{ url_for('update_location', location_id=location._id) }}" method='POST' enctype='multipart/form-data'>
         <div class='form-group'>
           <label for='date_of_cleanup'>When was he location cleaned</label>
-          <input type='date' id='date_of_cleanup' class='form-control' name='date_of_cleanup' required>
+          <input type='date' class='form-control' name='date_of_cleanup' min="2019-01-01" id='datePickerId' required>
         </div>
         <div class='form-group'>
           <label class='label' for='number_of_people'>How many people participated in the clean up?</label>
