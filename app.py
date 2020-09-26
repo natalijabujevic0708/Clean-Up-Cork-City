@@ -89,11 +89,13 @@ def update_location(location_id):
     location = mongo.db.active_locations.find_one(
         {"_id": ObjectId(location_id)})
     locations = mongo.db.active_locations
+    picture = request.files['picture']
+    mongo.save_file(picture.filename, picture)
     locations.update({'_id': ObjectId(location_id)},
                      {'status': 'cleaned',
                       'address_of_location': location['address_of_location'],
                       'picture_name': location['picture_name'],
-                      'cleaned_picture_name': request.form.get('picture'),
+                      'cleaned_picture_name': picture.filename,
                       'uploaded_by':  session['username'],
                       'date_of_cleanup': request.form.get('date_of_cleanup'),
                       'number_of_people': request.form.get('number_of_people'),
