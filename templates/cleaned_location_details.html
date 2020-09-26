@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <article class='item container'>
-    <header class='header_location_details row'>
+    <header class='header_cleaned_location_details row'>
         <img src='{{src}}'  class='images images_details col-6' />
         <img src='{{src_cleaned}}'  class='images images_details col-6' />
     </header>
@@ -8,7 +8,7 @@
         <p class="col-6 bold">BEFORE</p>
         <p class="col-6 bold">AFTER</p>
     </div>
-    <div class='left_align'>
+    <div >
         <p><span class='bold'>Address</span>: {{address}}</p>
         <p><span class='bold'>Uploaded by</span>: {{name}}</p> 
         <p><span class='bold'>Cleaned on</span>: {{date}}</p>

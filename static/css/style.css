@@ -211,7 +211,7 @@ canvas {
     width: 100%;
 }
 
-.item .header_location_details {
+.item .header_location_details, .item .header_cleaned_location_details {
     height: 50vh;
 }
 
@@ -359,5 +359,10 @@ ul.actions_location_details {
     .form_edit_picture input {
         font-size: 2vh;
         margin-left: 25%;
+    }
+    .item .header_location_details{
+        width: max-content;
+        margin: auto;
+        margin-bottom: 3vh;
     }
 }
