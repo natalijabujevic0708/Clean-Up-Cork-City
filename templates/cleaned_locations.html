@@ -15,7 +15,7 @@
 <section id='main' class='main items'>
   {% for location in locations %}
   {% if location.status == 'cleaned' %}
-  <article class='item items_locations'>
+  <article class='item items_locations address_of_locations'>
     <h2 class='address'>{{location.address_of_location}}</h2>
     <p class="lat_long"><i class='fas fa-map-marker-alt'></i> (Latitude :<span class='lat'>{{location.latitude_of_location}}</span>,
       Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
