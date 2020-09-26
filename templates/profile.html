@@ -4,8 +4,16 @@
   <p>- Hello {{session['username']}}! -</p>
   <canvas id="canvas"></canvas>
 </section>
-{% if locations %}
+{% for location in locations %}
+{% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
 <h2 class="title_uploaded">The locations you uploaded:</h2>
+{% break %}
+{% else %}
+<h2 class="title_uploaded">Upload your first location!<h2>
+{% break %}
+{% endif %}
+{% endfor %}
+
 {% for location in locations %}
 {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
 
@@ -16,6 +24,7 @@
       Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
     <ul class='actions'>
       <li><a href="{{url_for('profile_edit_location', location_id=location._id)}}" class='button'>Edit locations</a>
+      <li><a href="{{url_for('delete_location', location_id=location._id)}}" class='button'>Delete Location</a></li>
       </li>
     </ul>
   </article>
@@ -23,7 +32,7 @@
 
 {% endif %}
 {% endfor %}
-{% endif %}
+
 
 
 <ul class='actions actions_profile'>
