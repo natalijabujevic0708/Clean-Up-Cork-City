@@ -4,42 +4,58 @@
   <p>- Hello {{session['username']}}! -</p>
   <canvas id="canvas"></canvas>
 </section>
-{% for location in locations %}
-{% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
-<h2 class="title_uploaded">The locations you uploaded:</h2>
-{% break %}
-{% else %}
-<h2 class="title_uploaded">Upload your first location!<h2>
-{% break %}
-{% endif %}
-{% endfor %}
+<section>
 
-{% for location in locations %}
-{% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
+  {% for location in locations %}
+  {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
 
-<section id="main" class="main items margin_bottom">
-  <article class='item items_locations'>
-    <h3 class='address'>{{location.address_of_location}}</h3>
-    <p class="lat_long">(Latitude :<span class='lat'>{{location.latitude_of_location}}</span>,
-      Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
-    <ul class='actions'>
-      <li><a href="{{url_for('profile_edit_location', location_id=location._id)}}" class='button'>Edit locations</a>
-      <li><a href="{{url_for('delete_location', location_id=location._id)}}" class='button'>Delete Location</a></li>
-      </li>
-    </ul>
-  </article>
+  <h2 class="title_uploaded">The locations you uploaded:</h2>
+  {% break %}
+  {% else %}
+  <h2 class="title_uploaded">Upload your first location<br>or<br> join us for a cleanup event!<h2>
+      {% break %}
+      {% endif %}
+      {% endfor %}
+
+      {% for location in locations %}
+      {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
+
+      <section id="main" class="main items margin_bottom">
+        <article class='item items_locations'>
+          <h3 class='address'>{{location.address_of_location}}</h3>
+          <p class="lat_long">(Latitude :<span class='lat'>{{location.latitude_of_location}}</span>,
+            Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
+          <ul class='actions'>
+            <li><a href="{{url_for('profile_edit_location', location_id=location._id)}}" class='button'>Edit
+                locations</a>
+            <li><a href="{{url_for('delete_location', location_id=location._id)}}" class='button'>Delete
+                Location</a></li>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      {% endif %}
+      {% endfor %}
+
 </section>
 
-{% endif %}
-{% endfor %}
+<section>
+
+  <ul class='actions actions_profile '>
+    <li class="add_location"><a href="{{url_for('locations', _anchor='address_form')}}" class='button'>Add a new location</a></li>
+  </ul>
+
+
+  <ul class='actions actions_profile'>
+    <li><a href="{{url_for('events')}}" class='button'>Events</a></li>
+  </ul>
 
 
 
-<ul class='actions actions_profile'>
-  <li><a href="{{url_for('locations', _anchor='address_form')}}" class='button'>Add a new location</a></li>
-</ul>
-<ul class='actions actions_profile'>
-  <li><a href="{{url_for('logout')}}" class='button'>Logout</a></li>
-</ul>
 
+  <ul class='actions actions_profile'>
+    <li><a href="{{url_for('logout')}}" class='button'>Logout</a></li>
+  </ul>
+</section>
 {% endblock %}

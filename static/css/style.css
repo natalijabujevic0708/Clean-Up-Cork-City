@@ -198,7 +198,7 @@ canvas {
     margin: 0 12vh;
 }
 
-.btn {
+.btn, .add_location {
     background-color: #058e42c2;
     border-color: #006400;
 }
@@ -271,6 +271,16 @@ ul.actions_location_details {
     display: none;
 }
 
+/*------------------------- events.html */
+
+.events_section {
+    margin: 2vh;
+}
+
+.date_cleanup, .cleanup_location {
+    font-size: 3vh;
+}
+
 /*------------------------- Media Queries */
 
 @media only screen and (min-width: 768px) {
@@ -314,8 +324,12 @@ ul.actions_location_details {
     .images_details {
         object-fit: contain;
     }
-    .container form input, .container form button {
+    .container form input, .container form button, .btn {
         font-size: 2vh;
+    }
+    #upload_new_picture, .btn {
+        width: 50%;
+        margin: auto;
     }
 }
 
@@ -333,22 +347,27 @@ ul.actions_location_details {
         width: 50%;
         margin-left: 25vw;
     }
-    .btn {
-        width: 50%;
-        margin: auto;
+    #main.events_section .item {
+        width: 85%;
+        margin: 2vh auto;
     }
 }
 
 @media only screen and (min-width: 1200px) {
+    .nav-link {
+        font-size: 2vh;
+    }
     .item_about {
         margin: 5vh 10vw;
     }
     .btn {
         width: 35%;
     }
-    .profile_picture, #upload_new_picture form {
-        width: 50%;
+    .profile_picture, #upload_new_picture form, .item .header_location_details {
         margin: auto;
+    }
+    #upload_new_picture form {
+        width: 75%;
     }
     .profile_picture {
         margin-top: 5vh;
@@ -360,9 +379,8 @@ ul.actions_location_details {
         font-size: 2vh;
         margin-left: 25%;
     }
-    .item .header_location_details{
+    .item .header_location_details {
         width: max-content;
-        margin: auto;
         margin-bottom: 3vh;
     }
 }
