@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from geopy.geocoders import Nominatim
 
+
 app = Flask(__name__)
 mongo = PyMongo(app)
 
@@ -59,6 +60,14 @@ def picture(picture_name):
     return mongo.send_file(picture_name)
 
 # more details about the location
+
+@app.route('/events')
+def events():
+    """
+    Returns locations.html and documents from a active_locations collection in MongoDB.
+    """
+
+    return render_template('events.html', locations=mongo.db.active_locations.find())
 
 
 @app.route('/location_details/<location_id>')
