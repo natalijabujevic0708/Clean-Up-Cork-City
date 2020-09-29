@@ -10,7 +10,7 @@ function loop() {
   confs.forEach((conf) => {
     conf.update();
     conf.draw();
-  })
+  });
 }
 
 function Confetti () {
@@ -37,7 +37,7 @@ Confetti.prototype.border = function() {
   if (this.y >= h) {
     this.y = h;
   }
-}
+};
 
 Confetti.prototype.update = function() {
   this.y += this.speed;

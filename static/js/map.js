@@ -17,24 +17,24 @@ function initMap() {
             map: map,
         });
         infoWindow(marker, this.document.getElementsByClassName('address')[i].innerHTML);
-    };
+    }
 
     // Create info window when clicked on the marker
-    var iw = new google.maps.InfoWindow()
+    var iw = new google.maps.InfoWindow();
     function infoWindow(marker, message) {
         google.maps.event.addListener(marker, 'click', function () {
-            var html = "<p id='search_address' onclick = search_address()>" + message + "</p>"
+            var html = "<p id='search_address' onclick = search_address()>" + message + "</p>";
             // set the content 
             iw.setContent(html);
             // open the infowindow on the marker
             iw.open(map, marker);
         });
-    };
+    }
 
     // Create default bounds for autocomplete
     var defaultBounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(51.8722517, -8.53925228),
-        new google.maps.LatLng(51.91886165, -8.42110634))
+        new google.maps.LatLng(51.91886165, -8.42110634));
     var options = {
         bounds: defaultBounds,
         strictBounds: true,
@@ -42,21 +42,7 @@ function initMap() {
     };
     var input = document.getElementById('input_address');
 
-    autocomplete = new google.maps.places.Autocomplete(input, options)
+    autocomplete = new google.maps.places.Autocomplete(input, options);
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
