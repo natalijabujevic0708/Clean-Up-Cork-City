@@ -57,6 +57,5 @@ The website was viewed on a variety of devices such as Desktop, Laptop, iPhone, 
 <img src="static/images/readme_images/responsive_design.png" alt="Events" style="max-height:250px">
 
 ## Further testing:
-
 1. A large amount of testing was done to ensure that all pages were linking correctly.
 2. Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
