@@ -1,21 +1,23 @@
 {% extends 'base.html' %} {% block content %}
+<!-- Back button -->
 <section>
   <ul class="back_button">
     <li class="left_align">
       <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
     </li>
 </section>
+<!-- Title -->
 <section class="background">
   <div class="title_container ">
     <h1 class='title'>Clean Up Cork City</h1>
     <p class="bold_500">-Edit a location- <br> 1/2 </p>
   </div>
 </section>
-
+<!-- Flash message -->
 {% for message in get_flashed_messages() %}
 <p class='alert-error'>Error: {{ message }}</p>
 {% endfor %}
-
+<!-- Form -->
 <article class='item profile_item'>
   <form action="{{ url_for('profile_update_location', location_id=location._id) }}" method='POST'
     class="form_edit_location">
@@ -28,9 +30,7 @@
         data-geocomplete='street address' placeholder='{{location.address_of_location}}' required>
       <div id="map" class="map_profile"></div>
     </div>
-
     <button type='submit' class='btn btn-block'>Next</button>
-
   </form>
 </article>
 {% endblock %}

@@ -1,4 +1,4 @@
-// Click on the infowindow brings you to the article containing details
+// Click on the info window brings you to the article containing the details abot the location
 function search_address(){
     var address = document.getElementById("search_address").innerHTML
     var list= document.getElementsByClassName("address");

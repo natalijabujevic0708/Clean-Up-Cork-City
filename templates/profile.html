@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content %}
+<!-- Title -->
 <section class='title_container'>
   <h1 class='title'>Clean Up Cork City</h1>
   <p>- Hello {{session['username']}}! -</p>
   <canvas id="canvas"></canvas>
 </section>
+<!-- List of locations -->
 <section>
-
   {% for location in locations %}
   {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
-
   <h2 class="title_uploaded">The locations you uploaded:</h2>
   {% break %}
   {% else %}
@@ -16,10 +16,9 @@
       {% break %}
       {% endif %}
       {% endfor %}
-
+      I
       {% for location in locations %}
       {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
-
       <section id="main" class="main items margin_bottom">
         <article class='item items_locations'>
           <h3 class='address'>{{location.address_of_location}}</h3>
@@ -34,26 +33,18 @@
           </ul>
         </article>
       </section>
-
       {% endif %}
       {% endfor %}
-
 </section>
-
+<!-- Links -->
 <section>
-
   <ul class='actions actions_profile '>
-    <li class="add_location"><a href="{{url_for('locations', _anchor='address_form')}}" class='button' onclick="go_to_form()">Add a new location</a></li>
+    <li class="add_location"><a href="{{url_for('locations', _anchor='address_form')}}" class='button'
+        onclick="go_to_form()">Add a new location</a></li>
   </ul>
-
-
   <ul class='actions actions_profile'>
     <li><a href="{{url_for('events')}}" class='button'>Events</a></li>
   </ul>
-
-
-
-
   <ul class='actions actions_profile'>
     <li><a href="{{url_for('logout')}}" class='button'>Logout</a></li>
   </ul>

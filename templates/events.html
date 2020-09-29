@@ -1,16 +1,18 @@
 {% extends 'base.html' %} {% block content %}
+<!-- Back button -->
 <section>
   <ul class="back_button">
     <li class="left_align">
-        <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
+      <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
     </li>
 </section>
+<!-- Title -->
 <section class='title_container'>
   <h1 class='title'>Clean Up Cork City</h1>
   <p> - Events - </p>
   <canvas id="canvas"></canvas>
 </section>
-<!-- List of locations -->
+<!-- List of Events -->
 <section id='main' class='main items events_section'>
   {% for location in locations %}
   {% if location.status == 'not_cleaned' %}
@@ -18,10 +20,8 @@
     <h2 class="date_cleanup">Date of cleanup: <br> <span class="date_of_cleanup bold"></span></h2>
     <h2 class="date_cleanup">Time of cleanup: <span class="bold">10 AM</span></h2>
     <p class='address cleanup_location'>{{location.address_of_location}}</p>
-    
   </article>
   {% endif %}
   {% endfor %}
 </section>
-
 {% endblock %}

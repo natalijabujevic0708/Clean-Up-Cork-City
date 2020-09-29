@@ -61,20 +61,22 @@ def picture(picture_name):
 
 # more details about the location
 
-@app.route('/events')
-def events():
-    """
-    Returns locations.html and documents from a active_locations collection in MongoDB.
-    """
-
-    return render_template('events.html', locations=mongo.db.active_locations.find())
-
 
 @app.route('/location_details/<location_id>')
 def location_details(location_id):
     the_location_details = mongo.db.locations.find_one(
         {"_id": ObjectId(location_id)})
     address = the_location_details['address']
+=======
+    """
+    Find the current location by the location_id, and set the necessary variables needed for the template (src, name, address, and date).
+    """
+
+    the_location_details = mongo.db.active_locations.find_one(
+        {'_id': ObjectId(location_id)})
+    src = url_for('picture', picture_name=the_location_details['picture_name'])
+    address = the_location_details['address_of_location']
+>>>>>>> c358725... Add comments throughout the code
     name = the_location_details['uploaded_by']
     date = the_location_details['date']
     src = url_for('picture', picture_name=the_location_details['picture_name'])
@@ -115,6 +117,7 @@ def update_location(location_id):
 
 # delete_location.html
 
+<<<<<<< HEAD
 @app.route('/delete_location/<location_id>')
 def delete_location(location_id):
     if 'username' in session:
@@ -162,6 +165,8 @@ def delete_location_update(location_id):
 
 # cleaned_locations.html
 
+=======
+>>>>>>> e19b49a... Add comments throughout the code
 @app.route('/cleaned_locations')
 def cleaned_locations():
     return render_template("cleaned_locations.html", locations=mongo.db.active_locations.find())
@@ -260,6 +265,7 @@ def profile_page():
 
 @app.route('/profile_edit_location/<location_id>')
 def profile_edit_location(location_id):
+<<<<<<< HEAD
     the_location_details = mongo.db.active_locations.find_one(
 <<<<<<< HEAD
         {"_id": ObjectId(location_id)})
@@ -278,6 +284,18 @@ def profile_edit_locationandpicture(location_id):
         {'_id': ObjectId(location_id)})
 
     return render_template('profile_edit_location.html', location=the_location_details)
+=======
+    """
+    If the user is logged in, find the current location by the location_id, and set the necessary variables needed for the template (location).
+    If the user is not logged in, redirect to login.html.
+    """
+    if 'username' in session:
+        the_location_details = mongo.db.active_locations.find_one(
+            {'_id': ObjectId(location_id)})
+        return render_template('profile_edit_location.html', location=the_location_details)
+
+    return render_template('login.html')
+>>>>>>> c358725... Add comments throughout the code
 
 
 @app.route('/profile_update_location/<location_id>', methods=['POST', 'GET'])
@@ -362,6 +380,7 @@ def profile_update_picture(location_id):
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # to insert a location on locations.html
 
 
@@ -389,6 +408,54 @@ def insert_location():
     flash("Please log in to add a location")
     return redirect(url_for('locations'))
 =======
+=======
+@app.route('/events')
+def events():
+    """
+    Returns events.html and documents from a active_locations collection in MongoDB.
+    """
+
+    return render_template('events.html', locations=mongo.db.active_locations.find())
+
+
+@app.route('/delete_location/<location_id>')
+def delete_location(location_id):
+    """
+    If the user is logged in, find the current location by the location_id, render template delete_location.html 
+    and set the necessary variable needed for the template (location).
+
+    If the user is not logged in, redirect to login.html.
+    """
+
+    if 'username' in session:
+        the_location = mongo.db.active_locations.find_one(
+            {'_id': ObjectId(location_id)})
+        return render_template('delete_location.html', location=the_location)
+    return render_template('login.html')
+
+
+@app.route('/delete_location_update/<location_id>', methods=['POST'])
+def delete_location_update(location_id):
+    """
+    Find the current location by the location_id, update the location with the new information from the form.
+    The information not gathered in the form remain the same. 
+
+    Insert the document in deleted_locations collection. Remove the document from active_locations collection.
+    """
+
+    the_location = mongo.db.active_locations.find_one(
+        {'_id': ObjectId(location_id)})
+    mongo.db.deleted_locations.insert(
+        {'_id': ObjectId(location_id),
+         'address': the_location['address_of_location'],
+         'reason_for_deleting': request.form.get('reason'),
+         'deleted_by': session['username'],
+         'date': time.strftime("%Y-%m-%d %H:%M:%S"),
+         })
+    mongo.db.active_locations.remove(the_location)
+    return redirect(url_for('locations'))
+
+>>>>>>> c358725... Add comments throughout the code
 @app.route('/insert_location', methods=['POST'])
 def insert_location():
     """

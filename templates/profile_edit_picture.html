@@ -1,10 +1,12 @@
 {% extends 'base.html' %} {% block content %}
+<!-- Title -->
 <section class="background">
   <div class="title_container ">
     <h1 class='title'>Clean Up Cork City</h1>
     <p class="bold_500">-Edit a location- <br> 2/2 </p>
   </div>
 </section>
+<!-- Picture of the location -->
 <article class='item profile_picture'>
   <header class='header_location_details'>
     <img src='{{src}}' id='card_image' class='images' />
@@ -15,6 +17,7 @@
   <li><a class='button' id="upload_picture">Yes</a></li>
   <li><a href="{{url_for('profile_page')}}" class='button'>No</a></li>
 </ul>
+<!-- Form -->
 <section id="upload_new_picture">
   <form action="{{ url_for('profile_update_picture', location_id=location._id) }}" method='POST'
     enctype='multipart/form-data' class="form_edit_picture">

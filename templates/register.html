@@ -1,37 +1,36 @@
 {% extends 'base.html' %} {% block content %}
+<!-- Title -->
 <section class='title_container'>
     <h1 class='title'>Clean Up Cork City</h1>
     <p>-Register-</p>
     <canvas id="canvas"></canvas>
 </section>
+<!-- Form -->
 <div class='container'>
     <div class='row'>
-        <div class='col-md-6'>
-            {% for message in get_flashed_messages() %}
-            <p class='alert-error'>Error: {{ message }}</p>
-            {% endfor %}
-            <form method='POST' action="{{ url_for('register') }}">
-                <div class='form-group'>
-                    <input type='text' class='form-control' name='username' placeholder='Username' required>
-                </div>
-                <div class='form-group'>
-                    <input type='email' class='form-control' name='email' placeholder='Email' required>
-                </div>
-                <div class='form-group'>
-                    <input type='password' class='form-control' name='pass' placeholder='Choose a Password' required>
-                </div>
-                <div class='form-group'>
-                    <input type='text' class='form-control' name='home_address' placeholder='Home Address' required>
-                </div>
-                <div class='form-group'>
-                    <label for='date_of_birth'>Date of Birth</label>
-                    <input type='date' id='date_of_birth' class='form-control' name='date_of_birth' max="2019-01-01" required>
-                </div>
-
-                <button type='submit' class='btn btn-block'>Register</button>
-            </form>
-            <br>
-        </div>
+        {% for message in get_flashed_messages() %}
+        <p class='alert-error'>Error: {{ message }}</p>
+        {% endfor %}
+        <form method='POST' action="{{ url_for('register') }}">
+            <div class='form-group'>
+                <input type='text' class='form-control' name='username' placeholder='Username' required>
+            </div>
+            <div class='form-group'>
+                <input type='email' class='form-control' name='email' placeholder='Email' required>
+            </div>
+            <div class='form-group'>
+                <input type='password' class='form-control' name='pass' placeholder='Choose a Password' required>
+            </div>
+            <div class='form-group'>
+                <input type='text' class='form-control' name='home_address' placeholder='Home Address' required>
+            </div>
+            <div class='form-group'>
+                <label for='date_of_birth'>Date of Birth</label>
+                <input type='date' id='date_of_birth' class='form-control' name='date_of_birth' max="2019-01-01"
+                    required>
+            </div>
+            <button type='submit' class='btn btn-block'>Register</button>
+        </form>
     </div>
 </div>
 {% endblock %}

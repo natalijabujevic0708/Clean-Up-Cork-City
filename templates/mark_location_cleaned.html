@@ -1,37 +1,36 @@
 {% extends 'base.html' %} {% block content %}
+<!-- Back button -->
 <section>
   <ul class="back_button">
     <li class="left_align">
-        <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
+      <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
     </li>
 </section>
+<!-- Title -->
 <section class='title_container'>
   <h1 class='title'>Clean Up Cork City</h1>
-  <p> Was  <span class="bold">{{location.address_of_location}}</span> cleaned? </p>
+  <p> Was <span class="bold">{{location.address_of_location}}</span> cleaned? </p>
   <p>- Give us all the info!-</p>
-
 </section>
-
+<!-- Form -->
 <div class='container form_background margin_bottom'>
   <div class='row'>
-    <div class='col-md-6'>
-      <form action="{{ url_for('update_location', location_id=location._id) }}" method='POST' enctype='multipart/form-data'>
-        <div class='form-group'>
-          <label for='date_of_cleanup'>When was he location cleaned</label>
-          <input type='date' class='form-control' name='date_of_cleanup' min="2019-01-01" id='datePickerId' required>
-        </div>
-        <div class='form-group'>
-          <label class='label' for='number_of_people'>How many people participated in the clean up?</label>
-          <input type='number' class='form-control-file' name='number_of_people' id='number_of_people' required>
-        </div>
-        <div class='form-group'>
-          <label class='label' for='picture'>Upload a picture of the location after the cleanup!</label>
-          <input type='file' class='form-control-file' name='picture' id='picture' required>
-        </div>
-        <button type='submit' class='btn btn-block'>Submit</button>
-      </form>
-    </div>
+    <form action="{{ url_for('update_location', location_id=location._id) }}" method='POST'
+      enctype='multipart/form-data'>
+      <div class='form-group'>
+        <label for='date_of_cleanup'>When was he location cleaned</label>
+        <input type='date' class='form-control' name='date_of_cleanup' min="2019-01-01" id='datePickerId' required>
+      </div>
+      <div class='form-group'>
+        <label class='label' for='number_of_people'>How many people participated in the clean up?</label>
+        <input type='number' class='form-control-file' name='number_of_people' id='number_of_people' required>
+      </div>
+      <div class='form-group'>
+        <label class='label' for='picture'>Upload a picture of the location after the cleanup!</label>
+        <input type='file' class='form-control-file' name='picture' id='picture' required>
+      </div>
+      <button type='submit' class='btn btn-block'>Submit</button>
+    </form>
   </div>
 </div>
-
 {% endblock %}

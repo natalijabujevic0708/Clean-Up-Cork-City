@@ -1,4 +1,4 @@
-
+// Create a list that contains the dates of all the Saturdays starting from today
 var today = new Date();
 var year = today.getFullYear()
 var month = today.getMonth()
@@ -17,7 +17,7 @@ for (var i = 0; i <= new Date(year, month, day).getDate(); i++)
     } 
    
 };
-
+// Add the dates to the events
 var date_of_cleanup = document.getElementsByClassName("date_of_cleanup");
 for (var i = 0; i < date_of_cleanup.length; i++) {
     date_of_cleanup[i].innerHTML = saturdays[i]

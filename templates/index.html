@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+<!-- Hero Image -->
 <header id="header" class="alt hero_image">
     <div class="inner">
         <h1>Clean Up Cork City</h1>
@@ -8,36 +9,32 @@
         </ul>
     </div>
 </header>
-
-<!-- Items -->
-<div class="mainSectionIndex">
-    <section id="main" class="main items">
-        <article class="item">
-            <header>
-                <a href="{{url_for('about')}}"><img
-                        src="https://images.pexels.com/photos/2547565/pexels-photo-2547565.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        alt="Plastic litter" class="images" /></a>
-                <h3>The issue of littering</h3>
-            </header>
-            <p>Our mission is to organise a community cleanup program in Cork City. <br> Learn how you can help!</p>
-            <ul class="actions">
-                <li><a href="{{url_for('about')}}" class="button">About Us</a></li>
-            </ul>
-        </article>
-        <article class="item">
-            <header>
-                <a href="{{url_for('locations')}}"><img
-                        src="https://www.exchangewire.com/wp-content/uploads/2016/02/Location.jpg" alt="Map"
-                        class="images" /></a>
-                <h3>Creating a map of waste</h3>
-            </header>
-            <p> Our mission is to create a map of illegal dumps in Cork City and clean them up with the help of our volunteers.</p>
-            <ul class="actions">
-                <li><a href="{{url_for('locations')}}" class="button">Map of Waste</a></li>
-            </ul>
-        </article>
-    </section>
-</div>
-
-
+<!-- Info section -->
+<section id="main" class="main items">
+    <article class="item">
+        <header>
+            <a href="{{url_for('about')}}"><img
+                    src="https://images.pexels.com/photos/2547565/pexels-photo-2547565.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                    alt="Plastic litter" class="images" /></a>
+            <h3>The issue of littering</h3>
+        </header>
+        <p>Our mission is to organise a community cleanup program in Cork City. <br> Learn how you can help!</p>
+        <ul class="actions">
+            <li><a href="{{url_for('about')}}" class="button">About Us</a></li>
+        </ul>
+    </article>
+    <article class="item">
+        <header>
+            <a href="{{url_for('locations')}}"><img
+                    src="https://www.exchangewire.com/wp-content/uploads/2016/02/Location.jpg" alt="Map"
+                    class="images" /></a>
+            <h3>Creating a map of waste</h3>
+        </header>
+        <p> Our mission is to create a map of illegal dumps in Cork City and clean them up with the help of our
+            volunteers.</p>
+        <ul class="actions">
+            <li><a href="{{url_for('locations')}}" class="button">Map of Waste</a></li>
+        </ul>
+    </article>
+</section>
 {% endblock %}

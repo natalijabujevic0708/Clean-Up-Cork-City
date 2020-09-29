@@ -2,15 +2,14 @@
 <!-- Title -->
 <section class="background">
   <div class="title_container ">
-      <h1 class="title">Clean Up Cork City</h1>
-      <ul class='actions'>
-        <li><a href="{{url_for('locations')}}" class='button active'>- Active dumps -</a></li>
-        <li><a href="{{url_for('cleaned_locations')}}" class='button'>- Cleaned Locations -</a></li>
-      </ul>
+    <h1 class="title">Clean Up Cork City</h1>
+    <ul class='actions'>
+      <li><a href="{{url_for('locations')}}" class='button active'>- Active dumps -</a></li>
+      <li><a href="{{url_for('cleaned_locations')}}" class='button'>- Cleaned Locations -</a></li>
+    </ul>
   </div>
-  </section>
-
-
+</section>
+<!-- Flash message -->
 {% for message in get_flashed_messages() %}
 <p class='alert-error'>Error: {{ message }}</p>
 {% endfor %}
@@ -27,8 +26,8 @@
     <ul class='actions'>
       <li><a href="{{url_for('location_details', location_id=location._id)}}" class='button'>More Details</a></li>
       <li><a href="{{url_for('mark_location_cleaned', location_id=location._id)}}" class='button'>Mark location as
-        cleaned!</a>
-    </li>
+          cleaned!</a>
+      </li>
     </ul>
   </article>
   {% endif %}
@@ -41,8 +40,8 @@
   <p>Add the details here!</p>
   <p class="border"></p>
   <div class='form-group'>
-    <input type='text' class='form-control input_address' name='address' id='input_address' data-geocomplete='street address'
-      required>
+    <input type='text' class='form-control input_address' name='address' id='input_address'
+      data-geocomplete='street address' required>
   </div>
   <div class='form-group'>
     <label for='picture'>Upload a picture of the location</label>
