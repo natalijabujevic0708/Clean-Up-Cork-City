@@ -123,9 +123,10 @@ Database information can be found in the separate file that can be accessed [her
 * JavaScript  
 * Python (3.6)
 
+
 ## Libraries, frameworks and API's
 - [BootStrap4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) to assist with the structuring and responsiveness of the site
-- [JQuery](https://jquery.com/)  for DOM manipulation.
+- [JQuery](https://jquery.com/) for DOM manipulation.
 - [Fontawesome (4.7.0)](https://fontawesome.com/v4.7.0/) library for custom icons
 - [Flask](https://pypi.org/project/Flask/) framework to build the web application
 - [Flask-Pymongo](https://pypi.org/project/Flask-PyMongo/) library to connect to the MongoDB database from the web application

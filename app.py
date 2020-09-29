@@ -7,6 +7,10 @@ from geopy.geocoders import Nominatim
 
 
 app = Flask(__name__)
+
+app.config['MONGO_DBNAME'] =  environ.get('MONGO_DBNAME')
+app.config['MONGO_URI'] = environ.get('MONGO_URI')
+
 mongo = PyMongo(app)
 
 # index.html
