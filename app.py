@@ -85,6 +85,20 @@ def location_details(location_id):
 # edit_location.html
 
 
+<<<<<<< HEAD
+=======
+
+@app.route('/mark_location_cleaned/<location_id>')
+def mark_location_cleaned(location_id):
+    """
+    If the user is logged in, find the current location by the location_id, render template mark_location_cleaned.html
+    and set the necessary variable needed for the template (location).
+
+    If the user is not logged in, redirect to login.html.
+    """
+
+<<<<<<< HEAD
+>>>>>>> 0bc6d52... Correct typos
 @app.route('/edit_location/<location_id>')
 def edit_location(location_id):
     if 'username' in session:
@@ -301,6 +315,14 @@ def profile_edit_locationandpicture(location_id):
 @app.route('/profile_update_location/<location_id>', methods=['POST', 'GET'])
 >>>>>>> 2937988... Check if the input address is valid
 def profile_update_location(location_id):
+<<<<<<< HEAD
+=======
+    """
+    Find the current location by the location_id, update the location with the new information from the form.
+    The information not gathered in the form remain the same.
+    """
+
+>>>>>>> 0bc6d52... Correct typos
     location = mongo.db.active_locations.find_one(
 <<<<<<< HEAD
         {"_id": ObjectId(location_id)})
@@ -329,18 +351,18 @@ def profile_update_locationandpicture(location_id):
     loc = geolocator.geocode(address)
 
     # make sure the user entered a valid address
-    if loc: 
+    if loc:
         # make sure the user entered an address in Cork City
         if 51.86 <= loc.latitude <= 51.92 and -8.54 <= loc.longitude <= -8.41:
             locations.update({'_id': ObjectId(location_id)},
-                                {'status': location['status'],
-                                'address_of_location': request.form.get('address'),
-                                'picture_name': location['picture_name'],
-                                'uploaded_by':  session['username'],
-                                'date': time.strftime("%Y-%m-%d %H:%M:%S"),
-                                'latitude_of_location': loc.latitude,
-                                'longitude_of_location': loc.longitude
-                                })
+                             {'status': location['status'],
+                              'address_of_location': request.form.get('address'),
+                              'picture_name': location['picture_name'],
+                              'uploaded_by':  session['username'],
+                              'date': time.strftime("%Y-%m-%d %H:%M:%S"),
+                              'latitude_of_location': loc.latitude,
+                              'longitude_of_location': loc.longitude
+                              })
             src = url_for('picture', picture_name=location['picture_name'])
             return render_template('profile_edit_picture.html', location=location, location_id=location_id, src=src)
 
@@ -349,14 +371,13 @@ def profile_update_locationandpicture(location_id):
 
     flash('Invalid address')
     return render_template('profile_edit_location.html',  location_id=location_id, location=location)
-    
 
 
 @app.route('/profile_update_picture/<location_id>', methods=['POST'])
 def profile_update_picture(location_id):
     """
     Find the current location by the location_id, update the location with the new information from the form.
-    The information not gathered in the form remain the same. 
+    The information not gathered in the form remain the same.
     """
 
 >>>>>>> 2937988... Check if the input address is valid
@@ -421,7 +442,7 @@ def events():
 @app.route('/delete_location/<location_id>')
 def delete_location(location_id):
     """
-    If the user is logged in, find the current location by the location_id, render template delete_location.html 
+    If the user is logged in, find the current location by the location_id, render template delete_location.html
     and set the necessary variable needed for the template (location).
 
     If the user is not logged in, redirect to login.html.
@@ -438,7 +459,7 @@ def delete_location(location_id):
 def delete_location_update(location_id):
     """
     Find the current location by the location_id, update the location with the new information from the form.
-    The information not gathered in the form remain the same. 
+    The information not gathered in the form remain the same.
 
     Insert the document in deleted_locations collection. Remove the document from active_locations collection.
     """
@@ -455,7 +476,11 @@ def delete_location_update(location_id):
     mongo.db.active_locations.remove(the_location)
     return redirect(url_for('locations'))
 
+<<<<<<< HEAD
 >>>>>>> c358725... Add comments throughout the code
+=======
+
+>>>>>>> 0bc6d52... Correct typos
 @app.route('/insert_location', methods=['POST'])
 def insert_location():
     """
@@ -478,7 +503,7 @@ def insert_location():
         address = request.form.get('address')
         loc = geolocator.geocode(address)
         # make sure the user entered a valid address
-        if loc: 
+        if loc:
             # make sure the user entered an address in Cork City
             if 51.86 <= loc.latitude <= 51.92 and -8.54 <= loc.longitude <= -8.41:
                 # make sure the database is not empty
@@ -496,7 +521,6 @@ def insert_location():
                                 'longitude_of_location': loc.longitude
                             })
                             return redirect(url_for('locations'))
-                        
                         flash('This address already exists')
                         return redirect(url_for('locations'))
 
