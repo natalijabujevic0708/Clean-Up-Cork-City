@@ -4,7 +4,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Clean Up Cork City</title>
+    <title>Clean Up Cork | {{page_title}}</title>
     <link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel='stylesheet' href="{{ url_for('static', filename='css/TEMPLATED.css') }}" type='text/css' />
@@ -59,6 +59,8 @@
                         class='label'>Facebook</span></a></li>
         </ul>
     </footer>
+    {% block scripts %}
+    {% endblock scripts %}
     <!-- scroll.js -->
     <script src="{{ url_for('static', filename='js/scroll.js')}}"></script>
     <!-- date_of_event.js -->
@@ -69,19 +71,10 @@
     <script src="{{ url_for('static', filename='js/infowindow_scroll.js')}}"></script>
     <!-- retain_scroll_position.js -->
     <script src="{{ url_for('static', filename='js/retain_scroll_position.js')}}"></script>
-    <!-- date.js -->
-    <script src="{{ url_for('static', filename='js/date.js')}}"></script>
-    <!-- confetti.js -->
-    <script src="{{ url_for('static', filename='js/confetti.js')}}"></script>
     <!-- JQuery Geocomplete -->
     <script src='https://cdn.jsdelivr.net/npm/geocomplete@1.7.0/jquery.geocomplete.min.js'></script>
-    <!-- map.js -->
-    <script src="{{ url_for('static', filename='js/map.js')}}"></script>
     <!-- Font Awesome -->
     <script src="https://use.fontawesome.com/ad127ebdf9.js"></script>
-    <!-- Google Maps -->
-    <script async defer
-        src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places&callback=initMap'></script>
     <!-- Bootstrap -->
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js'
         integrity='sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J'

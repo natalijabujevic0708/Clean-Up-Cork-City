@@ -29,3 +29,10 @@
   {% endfor %}
 </section>
 {% endblock %}
+{% block scripts %}
+<!-- map.js -->
+<script src="{{ url_for('static', filename='js/map.js')}}"></script>
+<!-- Google Maps -->
+<script async defer
+src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places&callback=initMap'></script>
+{% endblock scripts %}

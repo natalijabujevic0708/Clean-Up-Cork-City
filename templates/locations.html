@@ -21,7 +21,7 @@
       Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
     <ul class='actions'>
       <li><a href="{{url_for('location_details', location_id=location._id)}}" class='button'>More Details</a></li>
-      <li><a href="{{url_for('mark_location_cleaned', location_id=location._id)}}" class='button'>Mark location as
+      <li><a href="{{url_for('mark_location_cleaned', location_id=location._id)}}" class='button'>Mark as
           cleaned!</a>
       </li>
     </ul>
@@ -51,3 +51,10 @@
 </form>
 {% endif %}
 {% endblock %}
+{% block scripts %}
+<!-- map.js -->
+<script src="{{ url_for('static', filename='js/map.js')}}"></script>
+<!-- Google Maps -->
+<script async defer
+src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places&callback=initMap'></script>
+{% endblock scripts %}
