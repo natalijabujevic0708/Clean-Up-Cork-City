@@ -7,6 +7,8 @@ from geopy.geocoders import Nominatim
 
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
+app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
 app.config['MONGO_DBNAME'] =  os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
@@ -33,6 +35,7 @@ def about():
 
 @app.route('/locations')
 def locations():
+<<<<<<< HEAD
     return render_template("locations.html", locations=mongo.db.locations.find({"status":"active"}))
 
 # to render the picture from MongoDB
@@ -58,6 +61,11 @@ def insert_location():
             'longitude_of_location': loc.longitude
             })
         return redirect(url_for('locations'))
+=======
+    """
+    Returns locations.html and documents from a active_locations collection in MongoDB.
+    """
+>>>>>>> 6df0a46... Corrected the code from the modifications with git
 
 @app.route('/<picture_name>')
 def picture(picture_name):
@@ -68,10 +76,13 @@ def picture(picture_name):
 
 @app.route('/location_details/<location_id>')
 def location_details(location_id):
+<<<<<<< HEAD
     the_location_details = mongo.db.locations.find_one(
         {"_id": ObjectId(location_id)})
     address = the_location_details['address']
 =======
+=======
+>>>>>>> 6df0a46... Corrected the code from the modifications with git
     """
     Find the current location by the location_id, and set the necessary variables needed for the template (src, name, address, and date).
     """
@@ -80,7 +91,10 @@ def location_details(location_id):
         {'_id': ObjectId(location_id)})
     src = url_for('picture', picture_name=the_location_details['picture_name'])
     address = the_location_details['address_of_location']
+<<<<<<< HEAD
 >>>>>>> c358725... Add comments throughout the code
+=======
+>>>>>>> 6df0a46... Corrected the code from the modifications with git
     name = the_location_details['uploaded_by']
     date = the_location_details['date']
     src = url_for('picture', picture_name=the_location_details['picture_name'])
@@ -102,19 +116,33 @@ def mark_location_cleaned(location_id):
     """
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 0bc6d52... Correct typos
 @app.route('/edit_location/<location_id>')
 def edit_location(location_id):
+=======
+>>>>>>> 6df0a46... Corrected the code from the modifications with git
     if 'username' in session:
         the_location = mongo.db.active_locations.find_one(
             {"_id": ObjectId(location_id)})
         return render_template('edit_location.html', location=the_location)
     return render_template('login.html')
 
+<<<<<<< HEAD
 # to update a location
 
 @app.route('/update_location/<location_id>', methods=['POST'])
 def update_location(location_id):
+=======
+
+@app.route('/update_location/<location_id>', methods=['POST'])
+def update_location(location_id):
+    """
+    Find the current location by the location_id, update the location with the new information from the form.
+    The information not gathered in the form remain the same.
+    """
+
+>>>>>>> 6df0a46... Corrected the code from the modifications with git
     location = mongo.db.active_locations.find_one(
         {"_id": ObjectId(location_id)})
     locations = mongo.db.active_locations
@@ -135,6 +163,7 @@ def update_location(location_id):
 
 # delete_location.html
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 @app.route('/delete_location/<location_id>')
 def delete_location(location_id):
@@ -185,6 +214,8 @@ def delete_location_update(location_id):
 
 =======
 >>>>>>> e19b49a... Add comments throughout the code
+=======
+>>>>>>> 6df0a46... Corrected the code from the modifications with git
 @app.route('/cleaned_locations')
 def cleaned_locations():
     return render_template("cleaned_locations.html", locations=mongo.db.active_locations.find())
@@ -548,18 +579,21 @@ def insert_location():
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 
 >>>>>>> e4f685d... Deleted the contact route, modified the key value pairs for edit and insert location (created a key status), added flash messages for invalid login
 =======
 >>>>>>> b80accd... Create new routes -  cleaned_location_details, profile_edit_location,   profile_edit_locationandpicture, profile_update_location, profile_update_locationandpicture
 =======
+=======
+
+>>>>>>> 6df0a46... Corrected the code from the modifications with git
 @app.route('/logout')
 def logout():
     session.pop('username', None)
     return redirect('/')
 
->>>>>>> 75dd38f... Create log out option
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
