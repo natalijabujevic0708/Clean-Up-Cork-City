@@ -257,7 +257,12 @@ ul.actions_location_details {
 .profile_item {
     padding-top: 0;
 }
-
+.anchor_profile:hover{
+    text-decoration: none;
+}
+.anchor_profile .address:hover {
+    font-weight: 600;
+}
 /*------------------------- profile_edit_location.html */
 
 .upload_new_picture {
@@ -353,8 +358,8 @@ ul.actions_location_details {
 }
 
 @media only screen and (min-width: 1200px) {
-    .nav-link {
-        font-size: 2vh;
+    .nav-link, #footer a {
+        font-size: 3vh;
     }
     .item_about {
         margin: 5vh 10vw;
@@ -382,4 +387,5 @@ ul.actions_location_details {
         width: max-content;
         margin-bottom: 3vh;
     }
+
 }
