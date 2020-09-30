@@ -1,8 +1,8 @@
 # Testing
-- HTML validated using [W3C Validator](https://validator.w3.org/) 
-- CSS validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) 
-- Python validated using [PEP8 online check](http://pep8online.com/)
-- JavaScript validated using [W3C Validator](https://validator.w3.org/) 
+- [W3C Markup Validator](https://validator.w3.org/) - [Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcleanupcork.herokuapp.com%2F)
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fcleanupcork.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+- [PEP8 online check](http://pep8online.com/) - [Result]
+- [JSHint](https://jshint.com/) - JavaScript code passed through a linter with no major issues.
 
 
 ## Testing user stories from the README.md
