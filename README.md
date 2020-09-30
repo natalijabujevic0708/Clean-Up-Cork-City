@@ -107,11 +107,11 @@ The following are the features provided in the **Clean up Cork City**  applicati
 
 
 # Testing
-Testing information can be found in the separate testing file that can be accessed [here](https://github.com/trisdauvergne/milestone-project-03/blob/00d1baa9a31a3c0238660b9be2836eee7824d2c7/TESTING.md).
+Testing information can be found in the separate testing file that can be accessed [here](https://github.com/natalijabujevic0708/Clean-up-Cork-City/blob/master/TESTING.md).
 
 
 # Database Organisation
-Database information can be found in the separate file that can be accessed [here](https://github.com/trisdauvergne/milestone-project-03/blob/master/readme_assets/readme_images/wt_data_structure.jpg).
+Database information can be found in the separate file that can be accessed [here](https://github.com/natalijabujevic0708/Clean-up-Cork-City/blob/master/DATABASE.md).
 
 
 # Technologies 
