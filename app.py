@@ -15,74 +15,28 @@ app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
-# index.html
-
 
 @app.route('/')
 def index():
-    return render_template("index.html")
-
-
-# about.html
+    return render_template('index.html')
 
 
 @app.route('/about')
 def about():
-    return render_template("about.html")
-
-# locations.html
+    return render_template('about.html')
 
 
 @app.route('/locations')
 def locations():
-<<<<<<< HEAD
-    return render_template("locations.html", locations=mongo.db.locations.find({"status":"active"}))
-
-# to render the picture from MongoDB
-
-@app.route('/insert_location', methods=['POST'])  # form on locations.html
-def insert_location():
-    if 'picture' in request.files:
-        picture = request.files['picture']
-        mongo.save_file(picture.filename, picture)
-        # using geolocator to determine latitude and longitude
-        geolocator = Nominatim(user_agent="natalijabujevic0708@gmail.com")
-        address = request.form.get('address')
-        loc = geolocator.geocode(address)
-        # inserting data in the MongoDB
-        mongo.db.locations.insert({
-            'status' : 'active',
-            'address': address,
-            'picture_name': picture.filename,
-            'uploaded_by': request.form.get('name'),
-            'email': request.form.get('email'),
-            'date': time.strftime("%Y-%m-%d %H:%M:%S"),
-            'latitude_of_location': loc.latitude,
-            'longitude_of_location': loc.longitude
-            })
-        return redirect(url_for('locations'))
-=======
     """
     Returns locations.html and documents from a active_locations collection in MongoDB.
     """
->>>>>>> 6df0a46... Corrected the code from the modifications with git
 
-@app.route('/<picture_name>')
-def picture(picture_name):
-    return mongo.send_file(picture_name)
-
-# more details about the location
+    return render_template('locations.html', locations=mongo.db.active_locations.find())
 
 
 @app.route('/location_details/<location_id>')
 def location_details(location_id):
-<<<<<<< HEAD
-    the_location_details = mongo.db.locations.find_one(
-        {"_id": ObjectId(location_id)})
-    address = the_location_details['address']
-=======
-=======
->>>>>>> 6df0a46... Corrected the code from the modifications with git
     """
     Find the current location by the location_id, and set the necessary variables needed for the template (src, name, address, and date).
     """
@@ -91,20 +45,20 @@ def location_details(location_id):
         {'_id': ObjectId(location_id)})
     src = url_for('picture', picture_name=the_location_details['picture_name'])
     address = the_location_details['address_of_location']
-<<<<<<< HEAD
->>>>>>> c358725... Add comments throughout the code
-=======
->>>>>>> 6df0a46... Corrected the code from the modifications with git
     name = the_location_details['uploaded_by']
     date = the_location_details['date']
-    src = url_for('picture', picture_name=the_location_details['picture_name'])
+
     return render_template('location_details.html', src=src, address=address, name=name, date=date)
 
-# edit_location.html
 
+@app.route('/<picture_name>')
+def picture(picture_name):
+    """
+    Retrieve the image stored in the MongoDB GridFS.
+    """
 
-<<<<<<< HEAD
-=======
+    return mongo.send_file(picture_name)
+
 
 @app.route('/mark_location_cleaned/<location_id>')
 def mark_location_cleaned(location_id):
@@ -115,25 +69,12 @@ def mark_location_cleaned(location_id):
     If the user is not logged in, redirect to login.html.
     """
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 0bc6d52... Correct typos
-@app.route('/edit_location/<location_id>')
-def edit_location(location_id):
-=======
->>>>>>> 6df0a46... Corrected the code from the modifications with git
     if 'username' in session:
         the_location = mongo.db.active_locations.find_one(
-            {"_id": ObjectId(location_id)})
-        return render_template('edit_location.html', location=the_location)
+            {'_id': ObjectId(location_id)})
+        return render_template('mark_location_cleaned.html', location=the_location)
     return render_template('login.html')
 
-<<<<<<< HEAD
-# to update a location
-
-@app.route('/update_location/<location_id>', methods=['POST'])
-def update_location(location_id):
-=======
 
 @app.route('/update_location/<location_id>', methods=['POST'])
 def update_location(location_id):
@@ -142,9 +83,8 @@ def update_location(location_id):
     The information not gathered in the form remain the same.
     """
 
->>>>>>> 6df0a46... Corrected the code from the modifications with git
     location = mongo.db.active_locations.find_one(
-        {"_id": ObjectId(location_id)})
+        {'_id': ObjectId(location_id)})
     locations = mongo.db.active_locations
     picture = request.files['picture']
     mongo.save_file(picture.filename, picture)
@@ -161,107 +101,46 @@ def update_location(location_id):
                       })
     return redirect(url_for('cleaned_locations'))
 
-# delete_location.html
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-@app.route('/delete_location/<location_id>')
-def delete_location(location_id):
-    if 'username' in session:
-        the_location = mongo.db.active_locations.find_one(
-            {"_id": ObjectId(location_id)})
-        return render_template('delete_location.html', location=the_location)
-    return render_template('login.html')
-
-# to delete a location
-
-@app.route('/delete_location_update/<location_id>', methods=['POST'])
-def delete_location_update(location_id):
-<<<<<<< HEAD
-    locations = mongo.db.locations
-    # using geolocator to determine latitude and longitude
-    geolocator = Nominatim(user_agent="natalijabujevic0708@gmail.com")
-    address = request.form.get('address')
-    loc = geolocator.geocode(address)
-    locations.update({'_id': ObjectId(location_id)},
-    {   'status' : 'deleted',
-        'address': address,
-        'reason_for_deleting': request.form.get('reason'),
-        'deleted_by': request.form.get('name'),
-        'email': request.form.get('email'),
-        'date': time.strftime("%Y-%m-%d %H:%M:%S"),
-        'latitude_of_location': loc.latitude,
-        'longitude_of_location': loc.longitude
-        })
-    return redirect(url_for('locations'))
-
-=======
-    the_location = mongo.db.active_locations.find_one(
-        {"_id": ObjectId(location_id)})
-    address = the_location['address_of_location']
-    # Adding to the delted_locations collection in MongoDB
-    mongo.db.deleted_locations.insert(
-        {'_id': ObjectId(location_id),
-         'address': address,
-         'reason_for_deleting': request.form.get('reason'),
-         'deleted_by': session['username'],
-         'date': time.strftime("%Y-%m-%d %H:%M:%S"),
-         })
-    mongo.db.active_locations.remove(the_location)
-    return redirect(url_for('locations'))
-
-# cleaned_locations.html
-
-=======
->>>>>>> e19b49a... Add comments throughout the code
-=======
->>>>>>> 6df0a46... Corrected the code from the modifications with git
 @app.route('/cleaned_locations')
 def cleaned_locations():
-    return render_template("cleaned_locations.html", locations=mongo.db.active_locations.find())
+    """
+    Returns cleaned_locations.html and documents from active_locations collection in MongoDB.
+    """
+
+    return render_template('cleaned_locations.html', locations=mongo.db.active_locations.find())
 
 
 @app.route('/cleaned_location_details/<location_id>')
 def cleaned_location_details(location_id):
-<<<<<<< HEAD
-=======
     """
     Find the current location by the location_id, and set the necessary variables needed for the template (src, src_cleaned, address, name, date and
     number of people).
     """
-<<<<<<< HEAD
-    
->>>>>>> d95e7c1... Add key:value pair number_of_people
-=======
 
->>>>>>> 2937988... Check if the input address is valid
     the_location_details = mongo.db.active_locations.find_one(
-        {"_id": ObjectId(location_id)})
-    address = the_location_details['address_of_location']
-    name = the_location_details['uploaded_by']
-<<<<<<< HEAD
-    date = the_location_details['date_of_clenup']
+        {'_id': ObjectId(location_id)})
     src = url_for('picture', picture_name=the_location_details['picture_name'])
     src_cleaned = url_for(
         'picture', picture_name=the_location_details['cleaned_picture_name'])
-    return render_template('cleaned_location_details.html', src=src, src_cleaned=src_cleaned, address=address, name=name, date=date)
-=======
+    address = the_location_details['address_of_location']
+    name = the_location_details['uploaded_by']
     date = the_location_details['date_of_cleanup']
     number_of_people = the_location_details['number_of_people']
-<<<<<<< HEAD
-    
-    return render_template('cleaned_location_details.html', src=src, src_cleaned=src_cleaned, address=address, name=name, date=date, number_of_people = number_of_people)
->>>>>>> d95e7c1... Add key:value pair number_of_people
-
-# register.html
-=======
 
     return render_template('cleaned_location_details.html', src=src, src_cleaned=src_cleaned, address=address, name=name, date=date, number_of_people=number_of_people)
->>>>>>> 2937988... Check if the input address is valid
 
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
+    """
+    Search for username in users collection.
+
+    If the username doesn't exsist, insert the information from the form.
+
+    If the username already exists flash an error message.
+    """
+
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'name': request.form['username']})
@@ -282,16 +161,20 @@ def register():
     return render_template('register.html')
 
 
-# login.html
 @app.route('/login_page')
 def login_page():
     return render_template('login.html')
 
-# to log in
-
 
 @app.route('/login', methods=['POST'])
 def login():
+    """
+    Search for the username in users collection.
+
+    If the username exsist, check if the password is correct. Returns profile.html and documents from a active_locations collection in MongoDB.
+
+    If the username doesn't exist or the password is incorrect flash an error message.
+    """
     users = mongo.db.users
     login_user = users.find_one({'name': request.form['username']})
 
@@ -300,13 +183,17 @@ def login():
             session['username'] = request.form['username']
             return render_template('profile.html', locations=mongo.db.active_locations.find())
 
-    flash("Invalid username/password combination")
+    flash('Invalid username/password combination')
     return render_template('login.html')
 
-# profile.html
 
 @app.route('/profile_page')
 def profile_page():
+    """
+    If the user is logged in, returns profile.html and documents from a active_locations collection in MongoDB.
+
+    If the user is not logged in, redirect to login.html.
+    """
     if 'username' in session:
         return render_template('profile.html', locations=mongo.db.active_locations.find())
     return render_template('login.html')
@@ -314,26 +201,6 @@ def profile_page():
 
 @app.route('/profile_edit_location/<location_id>')
 def profile_edit_location(location_id):
-<<<<<<< HEAD
-    the_location_details = mongo.db.active_locations.find_one(
-<<<<<<< HEAD
-        {"_id": ObjectId(location_id)})
-    src = url_for('picture', picture_name=the_location_details['picture_name'])
-    return render_template('profile_edit_location.html', location=the_location_details,  src=src)
-
-@app.route('/profile_edit_locationandpicture/<location_id>')
-def profile_edit_locationandpicture(location_id):
-    the_location_details = mongo.db.active_locations.find_one(
-        {"_id": ObjectId(location_id)})
-    return render_template('profile_edit_location+picture.html', location=the_location_details)
-
-
-@app.route('/profile_update_location/<location_id>', methods=["POST"])
-=======
-        {'_id': ObjectId(location_id)})
-
-    return render_template('profile_edit_location.html', location=the_location_details)
-=======
     """
     If the user is logged in, find the current location by the location_id, and set the necessary variables needed for the template (location).
     If the user is not logged in, redirect to login.html.
@@ -344,39 +211,16 @@ def profile_edit_locationandpicture(location_id):
         return render_template('profile_edit_location.html', location=the_location_details)
 
     return render_template('login.html')
->>>>>>> c358725... Add comments throughout the code
 
 
 @app.route('/profile_update_location/<location_id>', methods=['POST', 'GET'])
->>>>>>> 2937988... Check if the input address is valid
 def profile_update_location(location_id):
-<<<<<<< HEAD
-=======
     """
     Find the current location by the location_id, update the location with the new information from the form.
     The information not gathered in the form remain the same.
     """
 
->>>>>>> 0bc6d52... Correct typos
     location = mongo.db.active_locations.find_one(
-<<<<<<< HEAD
-        {"_id": ObjectId(location_id)})
-    locations = mongo.db.active_locations
-    locations.update({'_id': ObjectId(location_id)},
-                     {'status': location['status'],
-                      'address_of_location': request.form.get('address'),
-                      'picture_name': location['picture_name'],
-                      'uploaded_by':  session['username'],
-                      'date': time.strftime("%Y-%m-%d %H:%M:%S"),
-                      'latitude_of_location': location['latitude_of_location'],
-                      'longitude_of_location': location['longitude_of_location'],
-                      })
-    return render_template('profile.html', locations=mongo.db.active_locations.find())
-
-
-@app.route('/profile_update_locationandpicture/<location_id>', methods=["POST"])
-def profile_update_locationandpicture(location_id):
-=======
         {'_id': ObjectId(location_id)})
 
     # using geolocator to determine latitude and longitude
@@ -415,9 +259,8 @@ def profile_update_picture(location_id):
     The information not gathered in the form remain the same.
     """
 
->>>>>>> 2937988... Check if the input address is valid
     location = mongo.db.active_locations.find_one(
-        {"_id": ObjectId(location_id)})
+        {'_id': ObjectId(location_id)})
     locations = mongo.db.active_locations
     picture = request.files['picture']
     mongo.save_file(picture.filename, picture)
@@ -435,36 +278,6 @@ def profile_update_picture(location_id):
     return render_template('profile.html', locations=mongo.db.active_locations.find())
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-# to insert a location on locations.html
-
-
-@app.route('/insert_location', methods=['POST'])
-def insert_location():
-    if 'username' in session:
-        if 'picture' in request.files:
-            picture = request.files['picture']
-            mongo.save_file(picture.filename, picture)
-            # using geolocator to determine latitude and longitude
-            geolocator = Nominatim(user_agent="natalijabujevic0708@gmail.com")
-            address = request.form.get('address')
-            loc = geolocator.geocode(address)
-            # inserting data in the MongoDB
-            mongo.db.active_locations.insert({
-                'status': 'not_cleaned',
-                'address_of_location': address,
-                'picture_name': picture.filename,
-                'uploaded_by': session['username'],
-                'date': time.strftime("%Y-%m-%d %H:%M:%S"),
-                'latitude_of_location': loc.latitude,
-                'longitude_of_location': loc.longitude
-            })
-            return redirect(url_for('locations'))
-    flash("Please log in to add a location")
-    return redirect(url_for('locations'))
-=======
-=======
 @app.route('/events')
 def events():
     """
@@ -511,11 +324,7 @@ def delete_location_update(location_id):
     mongo.db.active_locations.remove(the_location)
     return redirect(url_for('locations'))
 
-<<<<<<< HEAD
->>>>>>> c358725... Add comments throughout the code
-=======
 
->>>>>>> 0bc6d52... Correct typos
 @app.route('/insert_location', methods=['POST'])
 def insert_location():
     """
@@ -575,22 +384,13 @@ def insert_location():
 
         flash('Invalid address')
         return redirect(url_for('locations'))
->>>>>>> 2937988... Check if the input address is valid
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
 
->>>>>>> e4f685d... Deleted the contact route, modified the key value pairs for edit and insert location (created a key status), added flash messages for invalid login
-=======
->>>>>>> b80accd... Create new routes -  cleaned_location_details, profile_edit_location,   profile_edit_locationandpicture, profile_update_location, profile_update_locationandpicture
-=======
-=======
-
->>>>>>> 6df0a46... Corrected the code from the modifications with git
 @app.route('/logout')
 def logout():
+    """
+    Log out the user, redirect to index.html.
+    """
     session.pop('username', None)
     return redirect('/')
 
