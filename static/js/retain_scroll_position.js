@@ -13,5 +13,6 @@ $(function () {
 });
 // When a user clicks the button "Add a new location" on their profile page, set the value of the forms position to the session storage for the locations page, so that the user is redirected there
 function go_to_form(){
-    sessionStorage.setItem("scrollPosition_/locations", "1800"); 
+    var bottomPosition = $(document).height()
+    sessionStorage.setItem("scrollPosition_/locations", bottomPosition.toString()); 
 }
