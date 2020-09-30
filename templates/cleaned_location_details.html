@@ -13,7 +13,11 @@
         <p><span class='bold'>Address</span>: {{address}}</p>
         <p><span class='bold'>Uploaded by</span>: {{name}}</p>
         <p><span class='bold'>Cleaned on</span>: {{date}}</p>
+        {% if number_of_people == 1 %}
+        <p class="bold"> 1 person participated in the cleanup! </p>
+        {% else %}
         <p class="bold">{{number_of_people}} people participated in the cleanup! </p>
+        {% endif %}
     </div>
     <ul class='actions actions_location_details'>
         <li><a href="{{url_for('cleaned_locations')}}" class='button'>Go back to the map</a></li>
