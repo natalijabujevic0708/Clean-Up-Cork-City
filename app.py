@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
-app.config['MONGO_DBNAME'] =  os.environ.get('MONGO_DBNAME')
+app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
@@ -18,27 +18,33 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+
+    return render_template('index.html', page_title="Home")
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', page_title="About")
 
 
 @app.route('/locations')
 def locations():
     """
-    Returns locations.html and documents from a active_locations collection in MongoDB.
+    Returns locations.html and documents from a active_locations collection
+    in MongoDB.
     """
 
-    return render_template('locations.html', locations=mongo.db.active_locations.find())
+    return render_template('locations.html',
+                           locations=mongo.db.active_locations.find(),
+                           page_title="Locations")
 
 
 @app.route('/location_details/<location_id>')
 def location_details(location_id):
     """
-    Find the current location by the location_id, and set the necessary variables needed for the template (src, name, address, and date).
+    Find the current location by the location_id,
+    and set the necessary variables needed for the template (src, name,
+    address, and date).
     """
 
     the_location_details = mongo.db.active_locations.find_one(
@@ -48,7 +54,8 @@ def location_details(location_id):
     name = the_location_details['uploaded_by']
     date = the_location_details['date']
 
-    return render_template('location_details.html', src=src, address=address, name=name, date=date)
+    return render_template('location_details.html', src=src, address=address,
+                           name=name, date=date, page_title="Location Details")
 
 
 @app.route('/<picture_name>')
@@ -63,7 +70,8 @@ def picture(picture_name):
 @app.route('/mark_location_cleaned/<location_id>')
 def mark_location_cleaned(location_id):
     """
-    If the user is logged in, find the current location by the location_id, render template mark_location_cleaned.html
+    If the user is logged in, find the current location by the location_id,
+    render template mark_location_cleaned.html
     and set the necessary variable needed for the template (location).
 
     If the user is not logged in, redirect to login.html.
@@ -72,14 +80,17 @@ def mark_location_cleaned(location_id):
     if 'username' in session:
         the_location = mongo.db.active_locations.find_one(
             {'_id': ObjectId(location_id)})
-        return render_template('mark_location_cleaned.html', location=the_location)
-    return render_template('login.html')
+        return render_template('mark_location_cleaned.html',
+                               location=the_location,
+                               page_title="Mark as cleaned")
+    return redirect(url_for('login_page'))
 
 
 @app.route('/update_location/<location_id>', methods=['POST'])
 def update_location(location_id):
     """
-    Find the current location by the location_id, update the location with the new information from the form.
+    Find the current location by the location_id, update the location
+    with the new information from the form.
     The information not gathered in the form remain the same.
     """
 
@@ -105,17 +116,21 @@ def update_location(location_id):
 @app.route('/cleaned_locations')
 def cleaned_locations():
     """
-    Returns cleaned_locations.html and documents from active_locations collection in MongoDB.
+    Returns cleaned_locations.html and documents from active_locations
+    collection in MongoDB.
     """
 
-    return render_template('cleaned_locations.html', locations=mongo.db.active_locations.find())
+    return render_template('cleaned_locations.html',
+                           locations=mongo.db.active_locations.find(),
+                           page_title="Cleaned locations")
 
 
 @app.route('/cleaned_location_details/<location_id>')
 def cleaned_location_details(location_id):
     """
-    Find the current location by the location_id, and set the necessary variables needed for the template (src, src_cleaned, address, name, date and
-    number of people).
+    Find the current location by the location_id, and set the necessary
+    variables needed for the template
+    (src, src_cleaned, address, name, date and number of people).
     """
 
     the_location_details = mongo.db.active_locations.find_one(
@@ -128,7 +143,11 @@ def cleaned_location_details(location_id):
     date = the_location_details['date_of_cleanup']
     number_of_people = the_location_details['number_of_people']
 
-    return render_template('cleaned_location_details.html', src=src, src_cleaned=src_cleaned, address=address, name=name, date=date, number_of_people=number_of_people)
+    return render_template('cleaned_location_details.html', src=src,
+                           src_cleaned=src_cleaned,
+                           address=address, name=name, date=date,
+                           number_of_people=number_of_people,
+                           page_title="Location details")
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -154,16 +173,16 @@ def register():
                 'date_of_birth': request.form['date_of_birth']
             })
             session['username'] = request.form['username']
-            return render_template('profile.html')
+            return redirect(url_for('profile_page'))
 
         flash('That username already exists!')
 
-    return render_template('register.html')
+    return render_template('register.html', page_title="Register")
 
 
 @app.route('/login_page')
 def login_page():
-    return render_template('login.html')
+    return render_template('login.html', page_title="Log in")
 
 
 @app.route('/login', methods=['POST'])
@@ -171,9 +190,12 @@ def login():
     """
     Search for the username in users collection.
 
-    If the username exsist, check if the password is correct. Returns profile.html and documents from a active_locations collection in MongoDB.
+    If the username exsist, check if the password is correct.
+    Returns profile.html
+    and documents from a active_locations collection in MongoDB.
 
-    If the username doesn't exist or the password is incorrect flash an error message.
+    If the username doesn't exist or the password is incorrect
+    flash an error message.
     """
     users = mongo.db.users
     login_user = users.find_one({'name': request.form['username']})
@@ -181,42 +203,51 @@ def login():
     if login_user:
         if request.form['pass'] == login_user['password']:
             session['username'] = request.form['username']
-            return render_template('profile.html', locations=mongo.db.active_locations.find())
+            return render_template('profile.html',
+                                   locations=mongo.db.active_locations.find(),
+                                   page_title="Profile")
 
     flash('Invalid username/password combination')
-    return render_template('login.html')
+    return redirect(url_for('login_page'))
 
 
 @app.route('/profile_page')
 def profile_page():
     """
-    If the user is logged in, returns profile.html and documents from a active_locations collection in MongoDB.
+    If the user is logged in, returns profile.html and documents
+    from a active_locations collection in MongoDB.
 
     If the user is not logged in, redirect to login.html.
     """
     if 'username' in session:
-        return render_template('profile.html', locations=mongo.db.active_locations.find())
-    return render_template('login.html')
+        return render_template('profile.html',
+                               locations=mongo.db.active_locations.find(),
+                               page_title="Profile")
+    return redirect(url_for('login_page'))
 
 
 @app.route('/profile_edit_location/<location_id>')
 def profile_edit_location(location_id):
     """
-    If the user is logged in, find the current location by the location_id, and set the necessary variables needed for the template (location).
+    If the user is logged in, find the current location by the location_id,
+    and set the necessary variables needed for the template (location).
     If the user is not logged in, redirect to login.html.
     """
     if 'username' in session:
         the_location_details = mongo.db.active_locations.find_one(
             {'_id': ObjectId(location_id)})
-        return render_template('profile_edit_location.html', location=the_location_details)
+        return render_template('profile_edit_location.html',
+                               location=the_location_details,
+                               page_title="Edit location")
 
-    return render_template('login.html')
+    return redirect(url_for('login_page'))
 
 
 @app.route('/profile_update_location/<location_id>', methods=['POST', 'GET'])
 def profile_update_location(location_id):
     """
-    Find the current location by the location_id, update the location with the new information from the form.
+    Find the current location by the location_id, update the location with the
+    new information from the form.
     The information not gathered in the form remain the same.
     """
 
@@ -243,19 +274,22 @@ def profile_update_location(location_id):
                               'longitude_of_location': loc.longitude
                               })
             src = url_for('picture', picture_name=location['picture_name'])
-            return render_template('profile_edit_picture.html', location=location, location_id=location_id, src=src)
+            return render_template('profile_edit_picture.html',
+                                   location=location, location_id=location_id,
+                                   src=src, page_title="Edit location")
 
         flash('Address you have entered is outside of Cork City')
-        return render_template('profile_edit_location.html',  location_id=location_id, location=location)
+        return redirect(url_for('profile_edit_location', location_id=location_id))
 
     flash('Invalid address')
-    return render_template('profile_edit_location.html',  location_id=location_id, location=location)
+    return redirect(url_for('profile_edit_location', location_id=location_id))
 
 
 @app.route('/profile_update_picture/<location_id>', methods=['POST'])
 def profile_update_picture(location_id):
     """
-    Find the current location by the location_id, update the location with the new information from the form.
+    Find the current location by the location_id, update the location with the
+    new information from the form.
     The information not gathered in the form remain the same.
     """
 
@@ -275,23 +309,27 @@ def profile_update_picture(location_id):
                       'longitude_of_location': location['longitude_of_location'],
                       })
 
-    return render_template('profile.html', locations=mongo.db.active_locations.find())
+    return redirect(url_for('profile_page'))
 
 
 @app.route('/events')
 def events():
     """
-    Returns events.html and documents from a active_locations collection in MongoDB.
+    Returns events.html and documents from a active_locations collection
+    in MongoDB.
     """
 
-    return render_template('events.html', locations=mongo.db.active_locations.find())
+    return render_template('events.html',
+                           locations=mongo.db.active_locations.find(),
+                           page_title="Events")
 
 
 @app.route('/delete_location/<location_id>')
 def delete_location(location_id):
     """
-    If the user is logged in, find the current location by the location_id, render template delete_location.html
-    and set the necessary variable needed for the template (location).
+    If the user is logged in, find the current location by the location_id,
+    render template delete_location.html and set the necessary variable
+    needed for the template (location).
 
     If the user is not logged in, redirect to login.html.
     """
@@ -299,17 +337,20 @@ def delete_location(location_id):
     if 'username' in session:
         the_location = mongo.db.active_locations.find_one(
             {'_id': ObjectId(location_id)})
-        return render_template('delete_location.html', location=the_location)
-    return render_template('login.html')
+        return render_template('delete_location.html', location=the_location,
+                               page_title="Delete location")
+    return redirect(url_for('login_page'))
 
 
 @app.route('/delete_location_update/<location_id>', methods=['POST'])
 def delete_location_update(location_id):
     """
-    Find the current location by the location_id, update the location with the new information from the form.
+    Find the current location by the location_id, update the location with
+    the new information from the form.
     The information not gathered in the form remain the same.
 
-    Insert the document in deleted_locations collection. Remove the document from active_locations collection.
+    Insert the document in deleted_locations collection. Remove the document
+    from active_locations collection.
     """
 
     the_location = mongo.db.active_locations.find_one(
@@ -355,16 +396,24 @@ def insert_location():
                     # make sure the adress is not laready in the database
                     for i in mongo.db.active_locations.find():
                         if i['latitude_of_location'] != loc.latitude or i['longitude_of_location'] != loc.longitude:
+                            date = time.strftime("%Y-%m-%d %H:%M:%S")
+                            name = session['username']
                             mongo.db.active_locations.insert({
                                 'status': 'not_cleaned',
                                 'address_of_location': address,
                                 'picture_name': picture.filename,
-                                'uploaded_by': session['username'],
-                                'date': time.strftime("%Y-%m-%d %H:%M:%S"),
+                                'uploaded_by': name,
+                                'date': date,
                                 'latitude_of_location': loc.latitude,
                                 'longitude_of_location': loc.longitude
                             })
-                            return redirect(url_for('locations'))
+                            loc = mongo.db.active_locations.find_one({"address_of_location": address})
+                            location_id = loc.get('_id')
+                            return redirect(url_for('location_details',
+                                                    location_id=location_id,
+                                                    date=date,
+                                                    address=address,
+                                                    name=name))
                         flash('This address already exists')
                         return redirect(url_for('locations'))
 
@@ -377,7 +426,10 @@ def insert_location():
                                 'latitude_of_location': loc.latitude,
                                 'longitude_of_location': loc.longitude
                 })
-                return redirect(url_for('locations'))
+                loc = mongo.db.active_locations.find_one({"address_of_location": address})
+                location_id = loc.get('_id')
+                return redirect(url_for('location_details',
+                                        location_id=location_id))
 
             flash('Address you have entered is outside of Cork City')
             return redirect(url_for('locations'))
