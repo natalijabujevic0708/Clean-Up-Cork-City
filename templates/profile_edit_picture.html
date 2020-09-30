@@ -22,7 +22,7 @@
   <form action="{{ url_for('profile_update_picture', location_id=location._id) }}" method='POST'
     enctype='multipart/form-data' class="form_edit_picture">
     <div class='form-group'>
-      <input type='file' class='form-control-file' name='picture' id='picture' required>
+      <input type='file' class='form-control-file' name='picture' id='picture' accept="image/*" required>
     </div>
     <button type='submit' class='btn btn-block'>Submit</button>
   </form>
