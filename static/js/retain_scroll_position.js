@@ -5,14 +5,13 @@ $(function () {
     window.onbeforeunload = function () {
         var scrollPosition = $(document).scrollTop();
         sessionStorage.setItem("scrollPosition_" + pathName, scrollPosition.toString());
-        
+
     };
     if (sessionStorage["scrollPosition_" + pathName]) {
         $(document).scrollTop(sessionStorage.getItem("scrollPosition_" + pathName));
     }
 });
-// When a user clicks the button "Add a new location" on their profile page, set the value of the forms position to the session storage for the locations page, so that the user is redirected there
-function go_to_form(){
-    var bottomPosition = $(document).height()
-    sessionStorage.setItem("scrollPosition_/locations", bottomPosition.toString()); 
+// When a user clicks the button "Add a new location" on their profile page, remove the session storage so the _anchor atrribute works.
+function go_to_form() {
+    sessionStorage.removeItem("scrollPosition_/locations");
 }
