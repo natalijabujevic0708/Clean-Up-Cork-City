@@ -231,11 +231,11 @@ ul.actions_location_details {
 .back_button {
     list-style: none;
     margin: 1vh;
-    padding-left: 0;
+    padding-left: 1vh;
 }
 
 .back_button li a {
-    color: rgb(177, 161, 161);
+    color: rgb(74 69 69);
     font-size: 5vh;
 }
 
@@ -257,12 +257,15 @@ ul.actions_location_details {
 .profile_item {
     padding-top: 0;
 }
-.anchor_profile:hover{
+
+.anchor_profile:hover {
     text-decoration: none;
 }
+
 .anchor_profile .address:hover {
     font-weight: 600;
 }
+
 /*------------------------- profile_edit_location.html */
 
 .upload_new_picture {
@@ -288,7 +291,6 @@ ul.actions_location_details {
 /*------------------------- Media Queries */
 
 @media only screen and (min-width: 768px) {
-    /*------------------------- about.html */
     .item header h3 {
         font-weight: 600;
     }
@@ -314,11 +316,9 @@ ul.actions_location_details {
     #footer {
         margin-top: 0;
     }
-    /*------------------------- locations.html */
     .title_container .actions {
         padding: 3vh 0;
     }
-    /*------------------------- locations.html */
     .items_locations .lat_long {
         font-size: 1.75vh;
     }
@@ -387,5 +387,7 @@ ul.actions_location_details {
         width: max-content;
         margin-bottom: 3vh;
     }
-
+    .title_container {
+        padding: 2vh 0;
+    }
 }
