@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %}
-<!-- Back button -->
-<section>
-  <ul class="back_button">
-    <li class="left_align">
-      <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
-    </li>
-</section>
 <!-- Title -->
 <section class='title_container'>
+  <div>
+    <ul class="back_button">
+      <li class="left_align">
+        <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
+      </li>
+    </ul>
+  </div>
   <h1 class='title'>Clean Up Cork City</h1>
   <p> - Events - </p>
   <canvas id="canvas"></canvas>
@@ -28,4 +28,6 @@
 {% block scripts %}
 <!-- confetti.js -->
 <script src="{{ url_for('static', filename='js/confetti.js')}}"></script>
+<!-- date_of_event.js -->
+<script src="{{ url_for('static', filename='js/date_of_event.js')}}"></script>
 {% endblock scripts %}

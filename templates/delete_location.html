@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %}
-<!-- Back button -->
-<section>
-  <ul class="back_button">
-    <li class="left_align">
-      <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
-    </li>
-</section>
 <!-- Title -->
 <section class='title_container'>
+  <div>
+    <ul class="back_button">
+      <li class="left_align">
+        <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
+      </li>
+    </ul>
+  </div>
   <h1 class='title'>Clean Up Cork City</h1>
   <p>-Delete : <span class="bold"> {{location.address_of_location}} </span> -</p>
 </section>

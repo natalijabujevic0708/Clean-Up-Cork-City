@@ -1,13 +1,12 @@
 {% extends 'base.html' %} {% block content %}
-<!-- Back button -->
-<section>
-  <ul class="back_button">
-    <li class="left_align">
-      <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
-    </li>
-</section>
 <!-- Title -->
 <section class="background">
+  <div>
+    <ul class="back_button">
+      <li class="left_align">
+        <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
+      </li>
+  </div>
   <div class="title_container ">
     <h1 class='title'>Clean Up Cork City</h1>
     <p class="bold_500">-Edit a location- <br> 1/2 </p>
@@ -39,5 +38,5 @@
 <script src="{{ url_for('static', filename='js/map.js')}}"></script>
 <!-- Google Maps -->
 <script async defer
-src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places&callback=initMap'></script>
+  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA60WSTkV6Sr0CNgszxYkZIhyrYigZpnXI&libraries=places&callback=initMap'></script>
 {% endblock scripts %}
