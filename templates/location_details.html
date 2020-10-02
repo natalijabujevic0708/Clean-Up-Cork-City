@@ -10,6 +10,13 @@
         <p><span class='bold'>Date and time</span>: {{date}}</p>
     </div>
     <ul class='actions actions_location_details'>
+        {% if name ==  session['username']%}
+        <li><a href="{{url_for('profile_edit_location', location_id=location_id)}}" class='button'>Edit
+                locations</a>
+        </li>
+        <li><a href="{{url_for('delete_location', location_id=location_id)}}" class='button'>Delete
+                Location</a>
+            {% endif %}
         <li><a href="{{url_for('locations')}}" class='button'>Go back to the map</a></li>
     </ul>
 </article>
