@@ -9,26 +9,40 @@
 <div class='container'>
     <div class='row'>
         <div class='col-md-6'>
+            {% if errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in errors %}
+                    <li>{{error}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
             {% for message in get_flashed_messages() %}
             <p class='alert-error'>Error: {{ message }}</p>
             {% endfor %}
-            <form method='POST' action="{{ url_for('register') }}">
+            <form method='POST' action="{{ url_for('register_update') }}">
                 <div class='form-group'>
-                    <input type='text' class='form-control' name='username' placeholder='Username' required>
+                    <input type='text' class='form-control' id="username" name='username' placeholder='Username'
+                        required>
+                    <p class="instructions">Max 20 characters</p>
                 </div>
                 <div class='form-group'>
                     <input type='email' class='form-control' name='email' placeholder='Email' required>
+                    <p class="instructions">Max 30 characters</p>
                 </div>
                 <div class='form-group'>
                     <input type='password' class='form-control' name='pass' placeholder='Choose a Password' required>
+                    <p class="instructions">Max 20 characters</p>
                 </div>
                 <div class='form-group'>
                     <input type='text' class='form-control' name='home_address' placeholder='Home Address' required>
+                    <p class="instructions">Max 50 characters</p>
                 </div>
                 <div class='form-group'>
                     <label for='date_of_birth'>Date of Birth</label>
-                    <input type='date' id='date_of_birth' class='form-control' name='date_of_birth' max="2019-01-01"
-                        required>
+                    <input type='date' id='date_of_birth' class='form-control' name='date_of_birth' min="1920-01-01"
+                        max="2010-01-01" required>
                 </div>
 
                 <button type='submit' class='btn btn-block'>Register</button>

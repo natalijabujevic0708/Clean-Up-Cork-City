@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Title -->
+<section class='title_container'>
+    <div>
+        <ul class="back_button">
+            <li class="left_align">
+                <a href="{{ url_for('profile_page') }}" class='icon fas fa-arrow-circle-left'></a>
+            </li>
+        </ul>
+    </div>
+    <h1 class='title'>Clean Up Cork City</h1>
+    <p>- 404 PAGE NOT FOUND -</p>
+    <canvas id="canvas"></canvas>
+</section>
+<section id='main' class='main items events_section'>
+    <article class='item items_locations address_of_locations'>
+        <p class="date_cleanup">Looks like the page you are looking for doesn't exist</p>
+        <ul class='actions'>
+            <li><a href="{{url_for('index')}}" class='button'>Go to Home page</a></li>
+        </ul>
+    </article>
+</section>
+{% endblock %}
+{% block scripts %}
+<!-- confetti.js -->
+<script src="{{ url_for('static', filename='js/confetti.js')}}"></script>
+{% endblock scripts %}
