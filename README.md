@@ -36,43 +36,48 @@ The following are the features provided in the **Clean up Cork City**  applicati
 * The locations are sorted in 2 categories - active and cleaned.
 * **Active locations** represent all the locations that are still not cleaned. A user can see details of each location - address, location picture, who uploaded it and when.
 
-    <img src="static/images/readme_images/location_details.png" alt="Location details" style="max-height:250px">
+    <img src="static/images/readme_images/location_details.png" alt="Location details" style="max-height:200px">
+    <p>&nbsp;</p>
 
 * **Cleaned locations** represent all the locations that have been cleaned. A user can see details of each location - address, picture of the location before and after the cleanup, the name of the user who edited it, when was it cleaned and how many people participated in the cleanup.
 
-    <img src="static/images/readme_images/cleaned_location_details.png" alt="Cleaned location details" style="max-height:250px">
+    <img src="static/images/readme_images/cleaned_location_details.png" alt="Cleaned location details" style="max-height:200px">
+    <p>&nbsp;</p>
 
 * With both lists there is a  **map** showing the locations. The map contains markers representing the locations. When clicked the markers show an info window with the address of the location. When users click on the info window they are redirected to the location on the list.
 
-    <img src="static/images/readme_images/locations.png" alt="Locations" style="max-height:300px">
+    <img src="static/images/readme_images/locations.png" alt="Locations" style="max-height:250px">
+    <p>&nbsp;</p>
 
 
 ## User Login and Registration
 * Registering users are asked to create a username, provide an email address, date of birth and home address.
-* Users have to log in in order to contribute to the map of locations.
+* Users have to log in in order to contribute to the map of locations.  
 
-
-    <img src="static/images/readme_images/login.png" alt="Login" style="max-height:250px">
+    <img src="static/images/readme_images/login.png" alt="Login" style="max-height:200px">
+    <p>&nbsp;</p>
 
 
 
 ## User Profile
 * Users profile page contains a list of all the locations the user uploaded, with an option to edit or delete them.
 
-    <img src="static/images/readme_images/profile.png" alt="Profile" style="max-height:250px">
+    <img src="static/images/readme_images/profile.png" alt="Profile" style="max-height:200px">
+    <p>&nbsp;</p>
 
 * There is an event section on the profile that contains a list of all future events.
 
-    <img src="static/images/readme_images/events.png" alt="Events" style="max-height:250px">
+    <img src="static/images/readme_images/events.png" alt="Events" style="max-height:200px">
+    <p>&nbsp;</p>
 
 * Option to log out.
  
 
 ## Adding locations
 * Users who are logged in can add a location or mark an existing location as cleaned.  
-* The location is validated to make sure it doesn't already exist in the database and that it is an actual address in Cork City.
+* The location is validated to make sure it doesn't already exist in the database and that it is an actual address in Cork City.   
 
-    <img src="static/images/readme_images/add_location.png" alt="Add location" style="max-height:250px">
+    <img src="static/images/readme_images/add_location.png" alt="Add location" style="max-height:200px">
 
 ## Features Left to Implement
 * The possibility for registered users to edit their details, such as password or username.
@@ -96,12 +101,12 @@ The following are the features provided in the **Clean up Cork City**  applicati
 ### Who is the site focused on?
 1. People who want to help their community become litter free and a safer place to live.
 2. People who are worried about the animal and wildlife wellbeing.
-3. People who are environmentally conscious.
+3. Environmentally conscious people.
 
 ### The following user stories were used to design the website:
-1. Anna, “In my free time I love walking next to the River Lee, but I have noticed there is more and more trash around the walking paths. I think it's a big problem, not just for the wildlife living by the river but for us people as well. I would like to do something about it but don't know where to report this problem.”
+1. Anna, “In my free time, I love walking next to the River Lee, but I have noticed there is more and more trash around the walking paths. I think it's a big problem, not just for the wildlife living by the river but for us people as well. I would like to do something about it but don't know where to report this problem.”
 
-2. Chris, “I go for a walk with my dogs every Sunday on the outskirts of Cork but lately I have been reluctant to let them off the leash because there are so many places where people throw waste and rubbish and I am worried they will eat something that will make them sick. I think litter is a big problem in Cork and I would love to do something about it but I don't know where to start or what to do”
+2. Chris, “I go for a walk with my dogs every Sunday on the outskirts of Cork but lately I have been reluctant to let them off the leash because there are so many places where people throw waste and rubbish and I am worried they will eat something that will make them sick. I think litter is a big problem in Cork and I would love to do something about it but I don't know where to start or what to do.”
 
 3. Moira, “I haven't been to the local park for ages because it has become a place where people drink and leave empty bottles and rubbish. I heard some people tried to clean it up but don't know if they managed to do it.”
 
@@ -130,11 +135,11 @@ Database information can be found in the separate file that can be accessed [her
 - [Fontawesome (4.7.0)](https://fontawesome.com/v4.7.0/) library for custom icons
 - [Flask](https://pypi.org/project/Flask/) framework to build the web application
 - [Flask-Pymongo](https://pypi.org/project/Flask-PyMongo/) library to connect to the MongoDB database from the web application
-- [Geocomplete] (http://ubilabs.github.io/geocomplete/?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library) - jQuery Geocoding and Places Autocomplete Plugin
+- [Geocomplete](http://ubilabs.github.io/geocomplete/?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library) - jQuery Geocoding and Places Autocomplete Plugin
 - [GeoPy](https://geopy.readthedocs.io/en/stable/) for coordinates of addresses.
 - [Google Fonts](https://fonts.google.com/) for the fonts used throughout the page
 - [Google Maps](https://cloud.google.com/maps-platform) - geo-location API
-- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - templating language for Python
 
 ## Hosting and deployment 
 
@@ -159,17 +164,14 @@ This project has been pushed and deployed to the cloud application platform [Her
 7. Create `requirements.txt` ($ sudo pip3 freeze --local > requirements.txt)
 8. Create a `Procfile` (`$ echo web: python app.py > Procfile`)
 9. Go back to Heroku, under `Deploy` find `Existing Git repository` and copy the command:`$ heroku git:remote -a <app_name>` Paste this into the terminal.
-10. (If repository was not created already, type:
-11. `$ cd my-project/`
-12. `$ git init`
-13. `$ heroku git:remote -a <app_name>`)
-14. Type `$ heroku ps:scale web=1` into the terminal.
-15. Go back to Heroku, and at `Settings` copy `https://<app_name>.herokuapp.com/` 
-16. In the terminal type `git remote add http://<app_name>.herokuapp.com/`
-16. Type `git push -u heroku master`
-17. In the app dashboard, under `Settings` click on `Reveal Config Vars`
-21. Set "MONGO_URI" and "MONGO_DBNAME" and "SECRET_KEY"
-22. Once the build is complete, go back to Heroku and click on `Open App`
+10. Type `$ heroku ps:scale web=1` into the terminal.
+11. Go back to Heroku, and at `Settings` copy `https://<app_name>.herokuapp.com/` 
+12. In the terminal type `git remote add http://<app_name>.herokuapp.com/`
+13. Type `git push -u heroku master`
+14. In the app dashboard, under `Settings` click on `Reveal Config Vars`
+15. Set "MONGO_URI" and "MONGO_DBNAME" and "SECRET_KEY"
+16. Once the build is complete, go back to Heroku and click on `Open App`
+
 
 
 ## Credits
@@ -183,6 +185,7 @@ This project has been pushed and deployed to the cloud application platform [Her
 
 ### Content
 * The idea for this website came from an amazing project [World cleanup day](https://www.worldcleanupday.org/)
+* Inspiration for the README.md came from [trisdauvergne/milestone-project-03](https://github.com/trisdauvergne/milestone-project-03) and [taikatta/Milestone3-Konyvkucko](https://github.com/taikatta/Milestone3-Konyvkucko)
 
 
 ### Media
@@ -196,7 +199,7 @@ This project has been pushed and deployed to the cloud application platform [Her
 
 * Animation Illustration GIF By Jessica Riccardi found [here](https://giphy.com/gifs/cool-green-26DOxTG4DabtkUssE?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=)
 
-## Acknowledgments
+## Acknowledgements
 I would like to thank my mentor Brian Macharia for his advice and help with this project.
 
 
