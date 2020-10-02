@@ -7,53 +7,49 @@
 </section>
 <!-- List of locations -->
 <section>
-  {% for location in locations %}
-  {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
-  <h2 class="title_uploaded">The locations you uploaded:</h2>
-  {% break %}
-  {% else %}
-  <h2 class="title_uploaded">Upload your first location<br>or<br> join us for a cleanup event!<h2>
-      {% break %}
-      {% endif %}
-      {% endfor %}
-
-      {% for location in locations %}
-      {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
-      <section id="main" class="main items margin_bottom">
-        <article class='item items_locations'>
-          <a class='anchor_profile' href="{{url_for('location_details', location_id=location._id)}}">
-            <h3 class='address'>{{location.address_of_location}}</h3>
-          </a>
-          <p class="lat_long">(Latitude :<span class='lat'>{{location.latitude_of_location}}</span>,
-            Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
-          <ul class='actions'>
-            <li><a href="{{url_for('profile_edit_location', location_id=location._id)}}" class='button'>Edit
-                locations</a>
-            </li>
-            <li><a href="{{url_for('delete_location', location_id=location._id)}}" class='button'>Delete
-                Location</a>
-            </li>
-          </ul>
-        </article>
-      </section>
-      {% endif %}
-      {% endfor %}
-</section>
-<!-- Links -->
-<section>
-  <ul class='actions actions_profile '>
-    <li class="add_location"><a href="{{url_for('locations', _anchor='address_form')}}" class='button'
-        onclick="go_to_form()">Add a new location</a></li>
-  </ul>
-  <ul class='actions actions_profile'>
-    <li><a href="{{url_for('events')}}" class='button'>Events</a></li>
-  </ul>
-  <ul class='actions actions_profile'>
-    <li><a href="{{url_for('logout')}}" class='button'>Logout</a></li>
-  </ul>
-</section>
-{% endblock %}
-{% block scripts %}
-<!-- confetti.js -->
-<script src="{{ url_for('static', filename='js/confetti.js')}}"></script>
-{% endblock scripts %}
+  <h2 id="title" class="title_uploaded"></h2>
+  <section id="uploaded_locations">
+    {% for location in locations %}
+    {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
+    <div id="main" class="main items margin_bottom">
+      <article class='item items_locations'>
+        <a class='anchor_profile' href="{{url_for('location_details', location_id=location._id)}}">
+          <h3 class='address'>{{location.address_of_location}}</h3>
+        </a>
+        <p class="lat_long">(Latitude :<span class='lat'>{{location.latitude_of_location}}</span>,
+          Longitude : <span class='long'>{{location.longitude_of_location}}</span>)</p>
+        <ul class='actions'>
+          <li><a href="{{url_for('profile_edit_location', location_id=location._id)}}" class='button'>Edit
+              locations</a>
+          </li>
+          <li><a href="{{url_for('delete_location', location_id=location._id)}}" class='button'>Delete
+              Location</a>
+          </li>
+        </ul>
+      </article>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </section>
+  <!-- Links -->
+  <section>
+    <ul class='actions actions_profile '>
+      <li class="add_location"><a href="{{url_for('locations', _anchor='address_form')}}" class='button'
+          onclick="go_to_form()">Add a new location</a></li>
+    </ul>
+    <ul class='actions actions_profile'>
+      <li><a href="{{url_for('events')}}" class='button'>Events</a></li>
+    </ul>
+    <ul class='actions actions_profile'>
+      <li><a href="{{url_for('logout')}}" class='button'>Logout</a></li>
+    </ul>
+  </section>
+  {% endblock %}
+  {% block scripts %}
+  <!-- confetti.js -->
+  <script src="{{ url_for('static', filename='js/confetti.js')}}"></script>
+  <!-- title.js -->
+  <script src="{{ url_for('static', filename='js/title.js')}}"></script>
+  <!-- retain_scroll_position.js -->
+  <script src="{{ url_for('static', filename='js/retain_scroll_position.js')}}"></script>
+  {% endblock scripts %}
