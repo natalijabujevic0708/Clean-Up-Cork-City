@@ -1,8 +1,8 @@
 # Testing
 - [W3C Markup Validator](https://validator.w3.org/) - [Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcleanupcork.herokuapp.com%2F)
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fcleanupcork.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-- [PEP8 online check](http://pep8online.com/) - [Result]
-- [JSHint](https://jshint.com/) - JavaScript code passed through a linter with no major issues.
+- [PEP8 online check](http://pep8online.com/) - Python code passed the validation with no major issues.
+- [JSHint](https://jshint.com/) - JavaScript code passed the validation with no major issues.
 
 
 ## Testing user stories from the README.md
@@ -13,16 +13,16 @@
 
 2. _“I go for a walk with my dogs every Sunday on the outskirts of Cork but lately I have been reluctant to let them off the leash because there are so many places where people throw waste and rubbish and I am worried they will eat something that will make them sick. I think litter is a big problem in Cork and I would love to do something about it but I don't know where to start or what to do.”_
   
-    This user can: _Click **Learn more** on the welcome page > Click **About Us**, learn about the option to participate in the cleanup event > Go to **Sign up** > On the profile page click **Events** and see where he can join and help clean up a location
+    This user can: _Click **Learn more** on the welcome page > Click **About Us**, learn about the option to participate in the cleanup event > Go to **Sign up** > On the profile page click **Events** and see where he can join and help clean up a location_
 
 3. _“I haven't been to the local park for ages because it has become a place where people drink and leave empty bottles and rubbish. I heard some people tried to clean it up but don't know if they managed to do it.”_
  
-    This user can: _Click **Learn more** on the welcome page > Click **Map of waste**> Go to **Cleaned locations** and see if the location she was interested in was cleaned up.
+    This user can: _Click **Learn more** on the welcome page > Click **Map of waste**> Go to **Cleaned locations** and see if the location she was interested in was cleaned up_
 
 
 ## Manual testing 
 **Test:** Visit the website and find its purpose.  
-**Expected Outcome:** When the site is opened, there is the heading with the message and a button Learn more. When the button is clicked, the user is redirected to the bottom of the page with two sections explaining the purpose of the site   
+**Expected Outcome:** When the site is opened, there is the heading with the message and a button _Learn more_. When the button is clicked, the user is redirected to the bottom of the page with two sections explaining the purpose of the site   
 **Passed:** Yes
 
 <img src="static/images/testing_images/home_page.jpg" alt="Purpose of the site" style="max-height:250px">  
@@ -33,6 +33,7 @@
 **Passed:** Yes 
 
 <img src="static/images/testing_images/registration.jpg" alt="Registration" style="max-height:250px"> 
+<img src="static/images/testing_images/registration_2.png" alt="Registration" style="max-height:250px"> 
 <p>&nbsp;</p>
 
 **Test:**  Add a new location.  
@@ -47,7 +48,7 @@ list and the map.
 <p>&nbsp;</p>
 
 **Test:** Edit a location.  
-**Expected Outcome:** On the profile page, the user can edit the location that he/she uploaded. 
+**Expected Outcome:** On the profile page, the user can edit the location that he/she uploaded.  
 **Passed:** Yes 
 
 <img src="static/images/testing_images/edit.jpg" alt="Edit a location" style="max-height:250px"> 
