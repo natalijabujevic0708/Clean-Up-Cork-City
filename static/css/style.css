@@ -280,10 +280,10 @@ ul.actions_location_details {
 
 /*------------------------- events.html */
 
-.events_section {
-    margin: 2vh;
+#main.events_section {
+    margin: 0;
+    padding:0;
 }
-
 .date_cleanup, .cleanup_location {
     font-size: 3vh;
 }
@@ -310,6 +310,9 @@ ul.actions_location_details {
     .item p, .item ul, #footer, #address_form input, #address_form button, .title_container .actions, .actions.actions_profile, .signup_link {
         font-size: 2.5vh;
     }
+    ul.actions_location_details li a {
+        margin: 1.5vh;
+    }
     .item_about p, #address_form label, .signup_link, .before_after {
         margin-bottom: 3vh;
     }
@@ -331,6 +334,9 @@ ul.actions_location_details {
     #upload_new_picture, .btn {
         width: 50%;
         margin: auto;
+    }
+    #main.events_section {
+        margin: 2vh;
     }
     #footer {
         margin-top: 0;
