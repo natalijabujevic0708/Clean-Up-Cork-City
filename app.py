@@ -3,13 +3,14 @@ import time
 from flask import Flask, render_template, redirect, request, url_for, session, flash, abort
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from geopy.geocoders import Nominatim
 from datetime import datetime, date
+import googlemaps
 
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
+
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
@@ -374,24 +375,24 @@ def profile_update_location(location_id):
             {'_id': ObjectId(location_id)})
         if not location:
             abort(404)
-        # using geolocator to determine latitude and longitude
-        locations = mongo.db.active_locations
-        geolocator = Nominatim(user_agent='http://127.0.0.1:5000/locations')
+        # use Geocoding to determine latitude and longitude
+        gmaps = googlemaps.Client(key=os.environ.get('API_KEY'))
         address = request.form.get('address')
-        loc = geolocator.geocode(address)
-
+        geocode_result = gmaps.geocode(address)
         # make sure the user entered a valid address
-        if loc:
+        if geocode_result:
+            latitude = geocode_result[0]["geometry"]["location"]["lat"]
+            longitude  = geocode_result[0]["geometry"]["location"]["lng"]
             # make sure the user entered an address in Cork City
-            if 51.86 <= loc.latitude <= 51.92 and -8.54 <= loc.longitude <= -8.41:
+            if 51.86 <= latitude <= 51.92 and -8.54 <= longitude <= -8.41:
                 locations.update({'_id': ObjectId(location_id)},
                                  {'status': location['status'],
                                   'address_of_location': request.form.get('address'),
                                   'picture_name': location['picture_name'],
                                   'uploaded_by':  session['username'],
                                   'date': time.strftime("%Y-%m-%d %H:%M:%S"),
-                                  'latitude_of_location': loc.latitude,
-                                  'longitude_of_location': loc.longitude
+                                  'latitude_of_location': latitude,
+                                  'longitude_of_location': longitude
                                   })
                 src = url_for('picture', picture_name=location['picture_name'])
                 return render_template('profile_edit_picture.html',
@@ -524,18 +525,20 @@ def insert_location():
         if 'picture' in request.files:
             picture = request.files['picture']
             mongo.save_file(picture.filename, picture)
-            # use geolocator to determine latitude and longitude
-            geolocator = Nominatim(user_agent=request.user_agent.string)
+            # use Geocoding to determine latitude and longitude
+            gmaps = googlemaps.Client(key=os.environ.get('API_KEY'))
             address = request.form.get('address')
-            loc = geolocator.geocode(address)
+            geocode_result = gmaps.geocode(address)
             # make sure the user entered a valid address
-            if loc:
+            if geocode_result:
+                latitude = geocode_result[0]["geometry"]["location"]["lat"]
+                longitude  = geocode_result[0]["geometry"]["location"]["lng"]
                 # make sure the user entered an address in Cork City
-                if 51.86 <= loc.latitude <= 51.92 and -8.54 <= loc.longitude <= -8.41:
+                if 51.86 <= latitude <= 51.92 and -8.54 <= longitude <= -8.41:
                     # make sure the adress is not laready in the database
                     same_location = 0
                     for i in mongo.db.active_locations.find():
-                        if i['latitude_of_location'] == loc.latitude and i['longitude_of_location'] == loc.longitude:
+                        if i['latitude_of_location'] == latitude and i['longitude_of_location'] == longitude:
                             same_location += 1
                     if same_location > 0:
                         flash('This address already exists')
@@ -548,8 +551,8 @@ def insert_location():
                         'picture_name': picture.filename,
                         'uploaded_by': name,
                         'date': date,
-                        'latitude_of_location': loc.latitude,
-                        'longitude_of_location': loc.longitude
+                        'latitude_of_location': latitude,
+                        'longitude_of_location': longitude
                     })
                     loc = mongo.db.active_locations.find_one({
                         "address_of_location": address
