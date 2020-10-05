@@ -10,7 +10,6 @@ from datetime import datetime, date
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
-
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
@@ -18,10 +17,11 @@ mongo = PyMongo(app)
 
 
 def validate_form(form, form_purpose):
-    """ Returns an error list if the form fails on validation
+    """ 
+    Returns an error list if the data that the user submitted fail validation.
     """
 
-    # variable initialization
+    # variables
     max_username = 20
     max_email = 30
     max_password = 20
@@ -33,7 +33,8 @@ def validate_form(form, form_purpose):
 
     # validate register form
     if form_purpose == 'register':
-        valid_date_of_birth = datetime.strptime(form['date_of_birth'], '%Y-%m-%d').date()
+        valid_date_of_birth = datetime.strptime(
+            form['date_of_birth'], '%Y-%m-%d').date()
         if not form['username'] or len(form['username']) > max_username:
             error_list.append(
                 'Please enter a username with minimum 1 and maximum 20 characters.'
@@ -61,7 +62,8 @@ def validate_form(form, form_purpose):
             )
     # validate form to mark a location cleaned
     if form_purpose == 'mark_cleaned':
-        valid_date_of_cleanup = datetime.strptime(form['date_of_cleanup'], '%Y-%m-%d').date()
+        valid_date_of_cleanup = datetime.strptime(
+            form['date_of_cleanup'], '%Y-%m-%d').date()
         if not form['number_of_people'] or float(form['number_of_people']) > max_number_of_people:
             error_list.append(
                 'Please enter a number of people that participated in the cleanup (min 1, max 500)'
@@ -75,7 +77,7 @@ def validate_form(form, form_purpose):
             error_list.append(
                 'Invalid date!'
             )
-    # returns errors on an empty list
+    # returns error list
     return error_list
 
 
@@ -189,7 +191,8 @@ def update_location(location_id):
                               'latitude_of_location': location['latitude_of_location'],
                               'longitude_of_location': location['longitude_of_location'],
                               })
-            return redirect(url_for('cleaned_locations'))
+            return redirect(url_for('location_details',
+                                    location_id=location_id))
         return redirect(url_for('login_page'))
     else:
         the_location = mongo.db.active_locations.find_one(
@@ -254,7 +257,7 @@ def register_update():
 
     If the username already exists flash an error message.
 
-    If there is errors, return mark_location_cleaned.html and
+    If there is errors, return register.html and
     list the errors.
     """
     error_list = validate_form(request.form, 'register')
