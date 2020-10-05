@@ -375,6 +375,7 @@ def profile_update_location(location_id):
             {'_id': ObjectId(location_id)})
         if not location:
             abort(404)
+        locations = mongo.db.active_locations
         # use Geocoding to determine latitude and longitude
         gmaps = googlemaps.Client(key=os.environ.get('API_KEY'))
         address = request.form.get('address')
