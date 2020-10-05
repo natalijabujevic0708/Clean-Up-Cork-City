@@ -376,7 +376,7 @@ ul.actions_location_details {
     .background_about .bold{
         font-weight: 500;
     }
-    #main{
+    #main.main_about{
         padding: 0;
     }
     .btn {
