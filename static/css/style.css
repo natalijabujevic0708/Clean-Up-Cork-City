@@ -235,7 +235,7 @@ ul.actions_location_details {
 }
 
 .back_button li a {
-    color: rgb(74 69 69);
+    color: rgb(74, 69, 69);
     font-size: 5vh;
 }
 
@@ -313,9 +313,6 @@ ul.actions_location_details {
     .item_about p, #address_form label, .signup_link, .before_after {
         margin-bottom: 3vh;
     }
-    #footer {
-        margin-top: 0;
-    }
     .title_container .actions {
         padding: 3vh 0;
     }
@@ -334,6 +331,9 @@ ul.actions_location_details {
     #upload_new_picture, .btn {
         width: 50%;
         margin: auto;
+    }
+    #footer {
+        margin-top: 0;
     }
 }
 

@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<!-- Info section -->
+<!-- Info about the cleaned location -->
 <article class='item container'>
     <header class='header_cleaned_location_details row'>
         <img src='{{src}}' class='images images_details col-6' />
@@ -23,5 +23,4 @@
         <li><a href="{{url_for('cleaned_locations')}}" class='button'>Go back to the map</a></li>
     </ul>
 </article>
-
 {% endblock %}
