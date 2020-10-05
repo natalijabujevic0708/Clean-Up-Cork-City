@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <!-- Title -->
-<section class="background">
+<section class="background background_about">
     <div class="title_container ">
         <h1 class="title">Clean Up Cork City</h1>
         <p class="bold">-About Us-</p>
@@ -9,7 +9,7 @@
 <!-- About section-->
 <section id="main" class="container-fluid">
     <article class="item item_about">
-        <header>
+        <header class="header_about border">
             <a href="{{url_for('locations')}}"><img src="static/images/litter.jpg" alt="Plastic litter"
                     class="images" /></a>
             <h2>What is our mission?</h2>
@@ -23,7 +23,7 @@
         </ul>
     </article>
     <article class="item item_about">
-        <header>
+        <header class="header_about">
             <a href="{{url_for('login_page')}}"><img src="static/images/volunteers.jpeg" alt="Volunteers"
                     class="images" /></a>
             <h2>Become part of the change!</h2>

@@ -359,10 +359,25 @@ ul.actions_location_details {
 
 @media only screen and (min-width: 1200px) {
     .nav-link, #footer a {
-        font-size: 3vh;
+        font-size: 2.5vh;
     }
     .item_about {
-        margin: 5vh 10vw;
+        margin-top: 0;
+    }
+    .background_about{
+        min-height: 30vh;
+    }
+    .header_about{
+        min-height: 50vh;
+    }
+    .item header.border {
+        border-top: 1px solid black !important;
+    }
+    .background_about .bold{
+        font-weight: 500;
+    }
+    #main{
+        padding: 0;
     }
     .btn {
         width: 35%;
