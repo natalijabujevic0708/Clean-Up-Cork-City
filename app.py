@@ -192,7 +192,7 @@ def update_location(location_id):
                               'latitude_of_location': location['latitude_of_location'],
                               'longitude_of_location': location['longitude_of_location'],
                               })
-            return redirect(url_for('location_details',
+            return redirect(url_for('cleaned_location_details',
                                     location_id=location_id))
         return redirect(url_for('login_page'))
     else:
