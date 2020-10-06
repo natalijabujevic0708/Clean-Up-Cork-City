@@ -8,9 +8,9 @@
 <!-- List of locations -->
 <section>
   <h2 id="title" class="title_uploaded"></h2>
+  {% for location in locations %}
+  {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
   <section id="uploaded_locations">
-    {% for location in locations %}
-    {% if location.uploaded_by ==  session['username'] and location.status == 'not_cleaned' %}
     <div id="main" class="main items margin_bottom">
       <article class='item items_locations'>
         <a class='anchor_profile' href="{{url_for('location_details', location_id=location._id)}}">
@@ -28,9 +28,9 @@
         </ul>
       </article>
     </div>
-    {% endif %}
-    {% endfor %}
   </section>
+  {% endif %}
+  {% endfor %}
   <!-- Links -->
   <section>
     <ul class='actions actions_profile '>
