@@ -123,7 +123,7 @@ def location_details(location_id):
 
     return render_template('location_details.html', src=src, address=address,
                            name=name, date=date, location_id=location_id,
-                           page_title="Location Details")
+                           page_title="Location details")
 
 
 @app.route('/<picture_name>')
@@ -586,7 +586,7 @@ def page_not_found(error):
     """
     Return a 404 error.
     """
-    return render_template('404.html', page_titl='404'), 404
+    return render_template('404.html', page_title='404'), 404
 
 
 if __name__ == '__main__':
