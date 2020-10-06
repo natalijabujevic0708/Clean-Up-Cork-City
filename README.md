@@ -157,19 +157,17 @@ This project has been pushed and deployed to the cloud application platform [Her
 1. On Heroku create an account and log in.
 2. Click `new` and `create new app`.
 3. Choose a unique name for your app, select region and click on `Create App`
-4. Under the `Settings` click `Reveal Config Vars` and set IP to 0.0.0.0 and the PORT to 5000
-5. Go to the CLI and type `$ sudo snap install --classic heroku`
-6. Type `$ heroku login` command into the terminal
-7. Create `requirements.txt` ($ sudo pip3 freeze --local > requirements.txt)
-8. Create a `Procfile` (`$ echo web: python app.py > Procfile`)
-9. Go back to Heroku, under `Deploy` find `Existing Git repository` and copy the command:`$ heroku git:remote -a <app_name>` Paste this into the terminal.
-10. Type `$ heroku ps:scale web=1` into the terminal.
-11. Go back to Heroku, and at `Settings` copy `https://<app_name>.herokuapp.com/` 
-12. In the terminal type `git remote add http://<app_name>.herokuapp.com/`
-13. Type `git push -u heroku master`
-14. In the app dashboard, under `Settings` click on `Reveal Config Vars`
-15. Set "MONGO_URI" and "MONGO_DBNAME" and "SECRET_KEY"
-16. Once the build is complete, go back to Heroku and click on `Open App`
+4. Go to the CLI and type `$ sudo snap install heroku --classic`
+5. Type `$ heroku login` command into the terminal, type the email and the password.
+6. Go back to Heroku, under `Settings` find `Info` and copy the `Heroku Git URL`.
+7. Go to the CLI and type the command `$ git remote add heroku <Heroku Git URL>`
+8. Create `requirements.txt` (`$ sudo pip3 freeze --local > requirements.txt`)
+9. Create a `Procfile` (`$ echo web: python app.py > Procfile`)
+10. Type `git add .`, `git commit -m "Initial commit"` and `git push -u heroku master`
+11. Type `$ heroku ps:scale web=1` into the terminal.
+12. Go back to Heroku, under the `Settings` click `Reveal Config Vars` and set IP to 0.0.0.0 and the PORT to 5000. Set "MONGO_URI", "MONGO_DBNAME" and "API_KEY" with the corresponding values.
+13. Go back into Heroku and under `More` click `Restart all dynos`
+14. Click on `Open App`
 
 
 
