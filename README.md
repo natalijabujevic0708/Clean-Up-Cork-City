@@ -7,16 +7,16 @@ View the project on Heroku [here](https://cleanupcork.herokuapp.com/)
 ## Purpose of the application
 Littering is an ever-increasing worldwide problem. Chances are, you’ve seen litter scattered along roadsides, floating in waterways, or blowing across a parking lot. The well-being of people, animals, and the environment is compromised by litter. 
 
-**Clean up Cork City** is a community-driven app that will allow people to create a map of litter dumps around Cork City. People can register on the website and add details about a location in the city that is polluted with litter. Events are organised for the volunteers who will come to one of the locations and clean up the litter.
+**Clean Up Cork City** is a community-driven app that will allow people to create a map of litter dumps around Cork City. People can register on the website and add details about a location in the city that is polluted with litter. Events are organised for the volunteers who will come to one of the locations and clean up the litter.
 
 
 ## How does it work?
-Users can search the **Clean up Cork City** database upon their first use of the application. No registration is necessary to search and view the location details. 
+Users can search the **Clean Up Cork City** database upon their first use of the application. No registration is necessary to search and view the location details. 
 
 Users who are interested can sign up and contribute to the map. The user will be able to add new locations, as well as mark them as clean. The locations that the user uploaded are saved on the user's profile page and can be edited or deleted easily.
 
 # Features
-The following are the features provided in the **Clean up Cork City**  application. 
+The following are the features provided in the **Clean Up Cork City**  application. 
 
 ## Navigation bar and Footer
 * Each page features a **navigation bar** that takes two shapes depending on if the user is logged in or not. If the user is not logged the navbar includes Home, About, Locations and Log in/Sign up links.
@@ -112,11 +112,11 @@ The following are the features provided in the **Clean up Cork City**  applicati
 
 
 # Testing
-Testing information can be found in the separate testing file that can be accessed [here](https://github.com/natalijabujevic0708/Clean-up-Cork-City/blob/master/TESTING.md).
+Testing information can be found in the separate testing file that can be accessed [here](https://github.com/natalijabujevic0708/Clean-Up-Cork-City/blob/master/TESTING.md).
 
 
 # Database Organisation
-Database information can be found in the separate file that can be accessed [here](https://github.com/natalijabujevic0708/Clean-up-Cork-City/blob/master/DATABASE.md).
+Database information can be found in the separate file that can be accessed [here](https://github.com/natalijabujevic0708/Clean-Up-Cork-City/blob/master/DATABASE.md).
 
 
 # Technologies 
@@ -136,7 +136,6 @@ Database information can be found in the separate file that can be accessed [her
 - [Flask](https://pypi.org/project/Flask/) framework to build the web application
 - [Flask-Pymongo](https://pypi.org/project/Flask-PyMongo/) library to connect to the MongoDB database from the web application
 - [Geocomplete](http://ubilabs.github.io/geocomplete/?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library) - jQuery Geocoding and Places Autocomplete Plugin
-- [GeoPy](https://geopy.readthedocs.io/en/stable/) for coordinates of addresses.
 - [Google Fonts](https://fonts.google.com/) for the fonts used throughout the page
 - [Google Maps](https://cloud.google.com/maps-platform) - geo-location API
 - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - templating language for Python
