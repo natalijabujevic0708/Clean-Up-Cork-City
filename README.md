@@ -1,6 +1,6 @@
 ![](static/images/readme_images/heroImage.png)
 
-View the project on Heroku [here](https://cleanupcork.herokuapp.com/)
+View the project on Render [here](https://clean-up-cork-city.onrender.com/)
 
 # Overview
 
@@ -144,7 +144,7 @@ Database information can be found in the separate file that can be accessed [her
 
 - [Git](https://git-scm.com/) for version control
 - [Github](https://github.com/) to store repositories of the project
-- [Heroku](https://www.heroku.com/) for hosting the deployed app
+- [Render](https://render.com/) for hosting the deployed app
 - [MongoDB](https://account.mongodb.com/account/login?signedOut=true) for storing the database
 
 
@@ -152,23 +152,7 @@ Database information can be found in the separate file that can be accessed [her
 
 
 # Deployment
-This project has been pushed and deployed to the cloud application platform [Heroku](https://www.heroku.com/).
-
-1. On Heroku create an account and log in.
-2. Click `new` and `create new app`.
-3. Choose a unique name for your app, select region and click on `Create App`
-4. Go to the CLI and type `$ sudo snap install heroku --classic`
-5. Type `$ heroku login` command into the terminal, type the email and the password.
-6. Go back to Heroku, under `Settings` find `Info` and copy the `Heroku Git URL`.
-7. Go to the CLI and type the command `$ git remote add heroku <Heroku Git URL>`
-8. Create `requirements.txt` (`$ sudo pip3 freeze --local > requirements.txt`)
-9. Create a `Procfile` (`$ echo web: python app.py > Procfile`)
-10. Type `git add .`, `git commit -m "Initial commit"` and `git push -u heroku master`
-11. Type `$ heroku ps:scale web=1` into the terminal.
-12. Go back to Heroku, under the `Settings` click `Reveal Config Vars` and set IP to 0.0.0.0 and the PORT to 5000. Set "MONGO_URI", "MONGO_DBNAME" and "API_KEY" with the corresponding values.
-13. Go back into Heroku and under `More` click `Restart all dynos`
-14. Click on `Open App`
-
+This project has been pushed and deployed to the cloud application platform [Render](https://render.com/).
 
 
 ## Credits
